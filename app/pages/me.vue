@@ -26,7 +26,7 @@ definePageMeta({
       <card class="flex flex-col gap-y-2">
         <p class="text-lg font-misans font-semibold">邮箱</p>
         <p class="font-misans"><badge level="fan">自定义免费企业邮</badge> fan@fanfan.moe</p>
-        <p class="font-misans"><badge level="warning">教育邮箱</badge> B24042311@njupt.edu.cn</p>
+        <p class="font-misans"><badge level="warning">教育邮箱</badge> B████████@njupt.edu.cn</p>
         <p class="font-misans"><badge level="info">常规邮箱</badge> mangofanfanw@icloud.com</p>
         <p class="font-misans"><badge level="info">常规邮箱</badge> mangofanfanw@hotmail.com</p>
         <p class="font-misans"><badge level="info">常规邮箱</badge> sweetmangoes@qq.com</p>

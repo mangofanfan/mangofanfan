@@ -6,7 +6,11 @@
       <card class="w-full">
         <slot />
       </card>
-      <avatar class="size-80 border-4" src="/avatar.png" alt="Mango FanFan Q" />
+      <avatar
+        class="size-full border-2 md:size-80 md:border-4"
+        src="/avatar.png"
+        alt="Mango FanFan Q"
+      />
       <link-display-card
         id="position-1"
         class="position"
@@ -44,13 +48,9 @@
 </template>
 
 <style scoped>
+/* 中小屏幕（移动端）拥有常规首页 */
 div.default-container {
-  /* 将压缩页面内容宽度的任务交给 container，保证绝对定位的卡片与头像位置相对 */
-  padding: 0 20% 0;
-}
-
-div.blank {
-  height: 20vh;
+  padding: 0 8% 0;
 }
 
 div.default-layout {
@@ -62,28 +62,48 @@ div.default-layout {
   position: relative;
 }
 
+div.blank {
+  height: 4rem;
+}
+
 .position {
-  position: absolute;
-  width: 12rem;
+  width: 100%;
 }
 
-#position-1 {
-  top: 100px;
-  left: -32px;
-}
+/* 1024（lg）以上屏幕拥有定制首页 */
+@media screen and (min-width: 1024px) {
+  div.default-container {
+    /* 将压缩页面内容宽度的任务交给 container，保证绝对定位的卡片与头像位置相对 */
+    padding: 0 20% 0;
+  }
 
-#position-2 {
-  top: 200px;
-  left: -64px;
-}
+  div.blank {
+    height: 20vh;
+  }
 
-#position-3 {
-  top: 324px;
-  left: -44px;
-}
+  .position {
+    position: absolute;
+    width: 12rem;
+  }
 
-#position-4 {
-  top: 100px;
-  right: -32px;
+  #position-1 {
+    top: 100px;
+    left: -32px;
+  }
+
+  #position-2 {
+    top: 200px;
+    left: -64px;
+  }
+
+  #position-3 {
+    top: 324px;
+    left: -44px;
+  }
+
+  #position-4 {
+    top: 100px;
+    right: -32px;
+  }
 }
 </style>

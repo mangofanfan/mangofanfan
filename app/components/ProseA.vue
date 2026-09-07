@@ -12,11 +12,15 @@ if (href.startsWith('http://') || href.startsWith('https://')) {
 </script>
 
 <template>
-  <NuxtLink class="text-cyan-700 hover:underline hover:text-cyan-950" v-if="inner" :href="href">
+  <NuxtLink
+    class="font-misans text-cyan-700 hover:underline hover:text-cyan-950"
+    v-if="inner"
+    :href="href"
+  >
     <slot />
   </NuxtLink>
   <a
-    class="outer-link text-cyan-700 hover:underline hover:text-cyan-950"
+    class="outer-link font-misans text-cyan-700 hover:underline hover:text-cyan-950"
     v-else
     :href="href"
     :rel="rel ? rel : 'nofollow'"

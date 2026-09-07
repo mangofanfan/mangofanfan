@@ -10,10 +10,19 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ['@nuxt/image', '@nuxt/eslint', '@nuxt/content', "nitro-cloudflare-dev"],
+  modules: ['@nuxt/image', '@nuxt/icon', '@nuxt/eslint', '@nuxt/content', 'nitro-cloudflare-dev'],
+
+  icon: {
+    serverBundle: { collections: ['fa6-solid'] },
+    // 全站 SSG 的关键：禁止运行时回退到 api.iconify.design
+    fallbackToApi: false,
+    // 可选：把扫描到的用到的图标打进客户端包，
+    // 覆盖"仅在客户端交互时才出现的图标"这种 SSG 盲区
+    clientBundle: { scan: true },
+  },
 
   nitro: {
-    preset: "cloudflare_module",
+    preset: 'cloudflare_module',
 
     // 混合模式核心：全站预渲染
     prerender: {
@@ -24,7 +33,7 @@ export default defineNuxtConfig({
 
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
-    }
+      nodeCompat: true,
+    },
   },
 })

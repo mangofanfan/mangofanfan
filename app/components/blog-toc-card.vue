@@ -27,7 +27,7 @@ onBeforeUnmount(() => observer.value?.disconnect())
 </script>
 
 <template>
-  <card class="blog-toc-card w-60">
+  <card class="blog-toc-card">
     <p class="line-clamp-1"><span class="font-misans font-semibold">目录</span> {{ title }}</p>
     <prose-hr />
     <nav>
