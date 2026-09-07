@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+@import 'misans-webfont/misans-style.min.css';
+@import '@chinese-fonts/maple-mono-cn/dist/MapleMono-CN-Regular/result.css';
+
+@import 'custom.css';
+@import 'scrollbar.css';
+
+@theme {
+  --color-fan-50: oklch(0.979 0.03 196.672);
+  --color-fan-100: oklch(0.961 0.056 189.385);
+  --color-fan-200: oklch(0.942 0.085 189.453);
+  --color-fan-300: oklch(0.888 0.128 189.552);
+  --color-fan-400: oklch(0.825 0.128 189.312);
+  --color-fan-500: oklch(0.803 0.13 189.296);
+  --color-fan-600: oklch(0.701 0.118 187.727);
+  --color-fan-700: oklch(0.536 0.091 188.875);
+  --color-fan-800: oklch(0.447 0.076 186.208);
+  --color-fan-900: oklch(0.29 0.049 186.257);
+  
+  --font-misans: MiSans, sans-serif;
+  --font-maple-mono: Maple Mono CN, monospace;
+}

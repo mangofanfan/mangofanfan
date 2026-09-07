@@ -1,0 +1,5 @@
+/* 通用背景模糊 */
+.bg-blur {
+    background-color: rgb(240 248 255 / 0.5);
+    backdrop-filter: blur(8px);
+}

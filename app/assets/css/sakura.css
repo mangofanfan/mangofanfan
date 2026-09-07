@@ -1,0 +1,90 @@
+/**
+樱花来自：
+https://codepen.io/editor/davidrogers/pen/01a06338-0cc7-7c0f-a846-0c606744d3e5
+ */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100dvw;
+    background: rgba(245, 245, 245, 1);
+}
+
+.sakura {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 260px;
+    height: 260px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    transform: scale(200%);
+    animation: 7000ms infinite linear rotate;
+}
+
+.sakura:hover {
+    filter: hue-rotate(330deg);
+}
+
+.petal {
+    position: absolute;
+    top: calc(50% - 95px);
+    width: 74px;
+    height: 94px;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74 94'%3E%3Cpath d='M36.5967 7.35395C41.3464 2.75264 44.9329 0 44.9329 0C44.9329 0 73.2375 24.0737 73.1924 48.8637C73.1474 73.6538 39.8019 93.7913 36.5957 93.7913C33.3895 93.7913 -0.0450081 73.7368 4.5491e-05 48.9467C0.045099 24.1567 28.2607 0 28.2607 0C28.2607 0 31.8472 2.75264 36.5967 7.35395Z' fill='%23F7D3E0'/%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: #f7d3e0;
+    opacity: 0;
+    transform-origin: bottom;
+    animation: 6000ms infinite ease-in-out fade;
+}
+
+.petal:nth-child(2) {
+    transform: rotate(calc(350deg / 5));
+    animation-delay: -1200ms;
+}
+
+.petal:nth-child(3) {
+    transform: rotate(calc((350deg / 5) * 2));
+    animation-delay: -2400ms;
+}
+
+.petal:nth-child(4) {
+    transform: rotate(calc((350deg / 5) * 3));
+    animation-delay: -3600ms;
+}
+
+.petal:nth-child(5) {
+    transform: rotate(calc((350deg / 5) * 4));
+    animation-delay: -4800ms;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(200%);
+    }
+    100% {
+        transform: rotate(360deg) scale(200%);
+    }
+}

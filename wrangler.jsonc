@@ -1,0 +1,20 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "mangofanfan",
+	"main": "./.output/server/index.mjs",
+	"compatibility_date": "2026-09-03",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./.output/public/"
+	},
+	"d1_databases": [
+		{
+			"binding": "blog_content",
+			"database_name": "blog-content",
+			"database_id": "54559caa-f0ff-4b7a-b6b3-0b861f248889"
+		}
+	]
+}
