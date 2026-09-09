@@ -6,6 +6,11 @@ definePageMeta({
 const { data: posts } = await useAsyncData('blog-list', () =>
   queryCollection('blog').order('date', 'DESC').all()
 )
+
+useSeoMeta({
+  title: '芒果日志 列表',
+  description: '芒果帆帆的日志集合~',
+})
 </script>
 
 <template>

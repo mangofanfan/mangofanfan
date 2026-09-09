@@ -10,6 +10,11 @@ const { data: posts } = await useAsyncData('mcfpp-list', () =>
 const { data: postsVscodeExtension } = await useAsyncData('mcfpp-vscode-extension-list', () =>
   queryCollection('mcfppVscodeExtension').order('index', 'ASC').all()
 )
+
+useSeoMeta({
+  title: 'MCFPP 总览',
+  description: '芒果帆帆的 MCFPP 有关内容集合~',
+})
 </script>
 
 <template>

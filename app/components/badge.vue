@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { level } = defineProps<{
   level: 'fan' | 'info' | 'warning' | 'danger'
+  text?: string
 }>()
 
 const levelClass = ref('')
@@ -23,6 +24,7 @@ switch (level) {
 
 <template>
   <span :class="['border rounded-xl px-2 text-sm', levelClass]">
+    <span v-if="text">{{ text }}</span>
     <slot />
   </span>
 </template>

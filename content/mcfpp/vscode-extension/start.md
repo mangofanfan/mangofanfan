@@ -34,13 +34,16 @@ index: 1
 
 * 基于 TextMate 的基础语法高亮；
 * 由 :term-tip-lsp 实现的语义高亮、智能补全和错误警告；
-* 函数文档渲染。
+* 函数文档渲染；
+* 创建简单数据包模板。
 
 ![基础语法高亮](mcfpp/code-highlight.png)
 
 ![内置关键字文档](mcfpp/mcfpp-keyword-doc.png)
 
 ![函数文档](mcfpp/function-doc.png)
+
+![简单数据包模板](mcfpp/simple-template.png)
 
 ## 问题汇报与建议
 

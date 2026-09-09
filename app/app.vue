@@ -6,6 +6,7 @@ import 'assets/css/sakura.css'
   <div id="ALL">
     <NuxtRouteAnnouncer />
     <NuxtLayout>
+      <NuxtLoadingIndicator color="#8bc34a" :height="3" :duration="2000" :throttle="200" />
       <NuxtPage />
     </NuxtLayout>
   </div>
