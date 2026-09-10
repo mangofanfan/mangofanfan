@@ -7,7 +7,7 @@ import AppHeader from '~/components/app-header.vue'
     <header class="sticky top-3 z-10">
       <app-header />
     </header>
-    <div class="flex flex-row gap-x-3">
+    <app-secondbar>
       <div class="sidebar-col">
         <NuxtLink to="/blog">
           <card-button>博客列表</card-button>
@@ -16,7 +16,7 @@ import AppHeader from '~/components/app-header.vue'
       <div class="main-col">
         <slot />
       </div>
-    </div>
+    </app-secondbar>
     <footer>
       <app-footer />
     </footer>
@@ -29,14 +29,6 @@ div.blog-layout {
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 4%;
-}
-
-div.sidebar-col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex-basis: 240px;
-  flex-shrink: 0;
 }
 
 div.main-col {

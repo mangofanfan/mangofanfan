@@ -30,7 +30,7 @@ switch (shape) {
     shapeClass.value = 'rounded-full'
     break
   case 'square':
-    shapeClass.value = 'rounded-md'
+    shapeClass.value = 'rounded-md px-3 py-2'
     break
 }
 </script>

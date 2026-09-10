@@ -37,14 +37,14 @@ onBeforeUnmount(() => observer.value?.disconnect())
           v-for="link of links"
           v-bind:key="link.id"
         >
-          <a :href="'#' + link.id">{{ link.text }}</a>
+          <a class="line-clamp-1" :href="'#' + link.id">{{ link.text }}</a>
           <ul v-if="link.children" class="blog-toc-card__second-ul flex flex-col gap-y-1">
             <li
               :class="['depth', activeId === child.id ? 'chosen font-semibold' : '']"
               v-for="child of link.children"
               v-bind:key="child.id"
             >
-              <a :href="'#' + child.id">{{ child.text }}</a>
+              <a class="line-clamp-1" :href="'#' + child.id">{{ child.text }}</a>
             </li>
           </ul>
         </li>

@@ -19,14 +19,7 @@ watch(isAutoMode, (newVal) => {
       <app-header />
     </header>
     <div class="flex flex-row gap-x-3">
-      <div
-        :class="[
-          'sidebar-col fixed w-60 sm:w-100 top-22 px-0 flex flex-col gap-y-3 z-90 md:z-0 md:relative md:top-0',
-          'transition-all duration-300 ease-in md:opacity-100 md:w-60 md:shrink-0 md:basis-60',
-          isAutoMode ? 'opacity-0' : 'opacity-100',
-          { 'sidebar-col-hidden': isAutoHidden },
-        ]"
-      >
+      <app-secondbar>
         <NuxtLink class="block" to="/">
           <card-button class="bg-blur">芒果主页</card-button>
         </NuxtLink>
@@ -36,29 +29,10 @@ watch(isAutoMode, (newVal) => {
         <NuxtLink class="block" to="/mcfpp">
           <card-button class="bg-blur">MCFPP</card-button>
         </NuxtLink>
-      </div>
+      </app-secondbar>
       <div class="main-col">
         <slot />
       </div>
-
-      <client-only>
-        <teleport to="#home-teleports">
-          <fan-button
-            level="fan"
-            shape="circle"
-            class="size-8 md:hidden"
-            @click="
-              () => {
-                // 如果侧栏从关闭到展开的话，先取消 hidden
-                if (isAutoMode) isAutoHidden = false
-                nextTick(() => (isAutoMode = !isAutoMode))
-              }
-            "
-          >
-            <icon name="fa6-solid:house" />
-          </fan-button>
-        </teleport>
-      </client-only>
     </div>
     <footer>
       <app-footer />
