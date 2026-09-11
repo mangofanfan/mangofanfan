@@ -10,6 +10,7 @@ withDefaults(defineProps<Props>(), { direction: 'vertical' })
   <hr :class="direction" />
 </template>
 
+<!--suppress CssUnusedSymbol -->
 <style scoped>
 hr.vertical {
   height: 1px;

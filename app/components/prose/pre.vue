@@ -27,6 +27,7 @@ const props = defineProps<{
   </div>
 </template>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 .shiki {
   font-size: 1rem;

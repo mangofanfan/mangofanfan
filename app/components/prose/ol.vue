@@ -6,6 +6,7 @@
   </ol>
 </template>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 ol.fan-ol {
   counter-reset: fan-ol-li;
