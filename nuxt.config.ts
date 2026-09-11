@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    serverBundle: { collections: ['fa6-solid'] },
+    serverBundle: { collections: ['fa6-solid', 'codicon'] },
     // 全站 SSG 的关键：禁止运行时回退到 api.iconify.design
     fallbackToApi: false,
     // 可选：把扫描到的用到的图标打进客户端包，
@@ -34,15 +34,19 @@ export default defineNuxtConfig({
     clientBundle: { scan: true },
   },
 
+  // ？！大肥鱼强强！？
   nitro: {
+    // 把独立 Markdown 文档目录挂载为服务端资源（`assets:markdown`）。
+    // 这样 /api/markdown/** 可以直接按路径取文件，新增 .md 无需改动任何代码。
+    // 注意 dir 是相对 Nitro 的 srcDir（即项目的 server/ 目录）解析的。
+    serverAssets: [{ baseName: 'markdown', dir: '../app/assets/markdown', pattern: '**/*.md' }],
+
     // 仅在构建部署（nuxt build / generate，NODE_ENV=production）时启用 Cloudflare preset。
     // 不要在 dev 中启用：@nuxt/content 会依据 nitro.preset 选择对应 preset，
     // dev 下使用 cloudflare preset 会导致其客户端数据库加载依赖的
     // /__nuxt_content/<collection>/sql_dump.txt 接口返回空内容，
     // 从而出现“热更新后内容被清空 / 客户端导航后 Markdown 为空”的问题。
     // （dev 的 Cloudflare 绑定由 nitro-cloudflare-dev 提供，与此无关。）
-
-    // ？！大肥鱼强强！？
     preset: process.env.NODE_ENV === 'production' ? 'cloudflare_module' : undefined,
 
     // 混合模式核心：全站预渲染

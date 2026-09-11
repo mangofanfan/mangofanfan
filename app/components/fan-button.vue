@@ -1,12 +1,14 @@
 <script setup lang="ts">
-const { level, shape } = defineProps<{
+interface Props {
   level: 'fan' | 'info' | 'warning' | 'danger'
   shape?: 'circle' | 'square'
-}>()
+}
+
+const props = withDefaults(defineProps<Props>(), { shape: 'square' })
 
 const levelClass = ref('')
 
-switch (level) {
+switch (props.level) {
   case 'fan':
     levelClass.value = 'text-fan-600 bg-fan-100 border-fan-600 hover:bg-fan-300 hover:text-fan-800'
     break
@@ -25,7 +27,7 @@ switch (level) {
 
 const shapeClass = ref('')
 
-switch (shape) {
+switch (props.shape) {
   case 'circle':
     shapeClass.value = 'rounded-full'
     break
@@ -38,7 +40,7 @@ switch (shape) {
 <template>
   <button
     :class="[
-      'font-misans border flex flex-row items-center justify-center',
+      'font-misans border flex flex-row items-center justify-center cursor-pointer',
       levelClass,
       shapeClass,
     ]"

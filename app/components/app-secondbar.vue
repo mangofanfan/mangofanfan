@@ -33,7 +33,7 @@ const isAutoMode = ref(true)
           }
         "
       >
-        <icon name="fa6-solid:house" />
+        <iconify-icon set="fa6-solid" name="house" />
       </fan-button>
     </teleport>
     <teleport to="body">

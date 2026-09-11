@@ -44,7 +44,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['open', 'close'])
 
-// Vue 3.5 useTemplateRef：模板里直接写 ref="reference" 即可绑定
 const reference = useTemplateRef('reference')
 const floating = useTemplateRef('floating')
 const arrow = useTemplateRef('arrow')
@@ -58,7 +57,7 @@ const { open, strategy, x, y, side, arrowX, arrowY, show, hide, toggle } = useTi
 // 手动控制场景：父组件通过 ref 调用 show() / hide() / toggle()
 defineExpose({ open, show, hide, toggle })
 
-// Vue 3.5 useId：SSR 安全的唯一 id（同一渲染链路内稳定）
+// 唯一 id
 const tipId = useId()
 
 // 关键：首帧定位未算出前用 visibility 兜底，避免弹窗在 (0,0) 闪现
@@ -82,10 +81,9 @@ const arrowStyle = computed(() => ({
 </script>
 
 <template>
-  <!-- 触发器：一个 span，可 hover / Tab 聚焦 -->
   <span
     ref="reference"
-    class="term-tip__trigger"
+    :class="['term-tip__trigger relative', { 'z-9991': open }]"
     tabindex="0"
     :aria-describedby="open ? tipId : undefined"
     @mouseenter="show()"
@@ -96,7 +94,6 @@ const arrowStyle = computed(() => ({
     <slot>{{ term }}</slot>
   </span>
 
-  <!-- 弹窗：Teleport 到 body，逃离父级 overflow / z-index 陷阱 -->
   <Teleport to="body">
     <Transition name="term-tip">
       <div
@@ -134,6 +131,8 @@ const arrowStyle = computed(() => ({
         />
       </div>
     </Transition>
+
+    <div :class="['term-tip__mask', { hidden: !open }]" @click="hide" />
   </Teleport>
 </template>
 
@@ -154,12 +153,23 @@ const arrowStyle = computed(() => ({
   padding: 10px 14px;
   background: #fff;
   color: #042c53;
-  border: 1.5px solid #185fa5;
+  border: 1px solid #185fa5;
   border-radius: 8px;
   font-size: 13px;
   line-height: 1.7;
   z-index: 9999;
 }
+
+.term-tip__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 9990;
+}
+
 .term-tip__title {
   display: block;
   color: #185fa5;

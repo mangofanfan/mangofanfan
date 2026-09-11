@@ -12,9 +12,46 @@ index: 100
 
 ---
 
+## 扩展提供的设置
+
+### mcfpp.java.executablePath
+
+> Java 可执行文件路径，用于启动 MCFPP 语言服务器和 MCFPP 编译器。
+> 
+> 需要 Java 21 及以上版本。
+
+可配合扩展提供的命令 `mcfpp.command.testJavaExecutable` 检查是否可用。
+
+### mcfpp.compiler.path
+
+> MCFPP 编译器路径。
+
+在使用模板创建的项目中，此设置已作为 **工作区设置** 被写入模板包含的 `.vscode/settings.json`
+中，指向模板中包含的编译器（位于 `.mcfpp/mcfpp.jar`）故一般不需手动设置。
+
+## 扩展提供的命令
+
+### mcfpp.command.testJavaExecutable
+
+> 测试扩展设置中的 Java 可执行文件路径是否可用。
+> 
+> 会同时检查 Java 版本是否大于等于 21。
+
+### mcfpp.command.createSimpleDatepackTemplate
+
+> 创建简单数据包模板。
+
+请参见 [简单模板](./create-simple-template.md) 文档了解此命令。
+
 ## 扩展文件结构
 
 扩展文件目录同时也是一个 :term-tip-git 仓库，因此有一些文件会让你感觉眼熟，这是正常的。
+
+### /examples <badge level="info">模板文件</badge>
+
+包含一些被用在模板中的示例文件。
+
+在创建 MCFPP 数据包模板时，你会见到它们。
 
 ### /server <badge level="info">语言服务器</badge>
 
@@ -23,6 +60,9 @@ index: 100
 语言服务器构建自 [mcfpp-language-support](https://github.com/Alumopper/mcfpp-language-support)，单 jar 产物大小为 80MB。
 目前似乎没有优化方式，还请见谅。
 
+语言服务器是 Java 程序，因此为启动语言服务器，扩展需要用户提供一个 Java 可执行程序路径，即扩展设置
+`mcfpp.java.executablePath`。
+
 ### /src <badge level="info">源代码</badge>
 
 目录下包含此扩展的源代码。
@@ -30,9 +70,6 @@ index: 100
 `extension.ts` 是 VS Code 对扩展文件的执行入口，其他源文件是芒果自行组织的。
 
 此内容与 VS Code 扩展开发强相关，在此略过不提。
-
-语言服务器是 Java 程序，因此为启动语言服务器，扩展需要用户提供一个 Java 可执行程序路径，要求版本不低于 Java 21。
-相信这对于广大 MC 开发者来说并非难事。
 
 ### /syntaxes <badge level="info">代码基本高亮</badge>
 

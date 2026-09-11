@@ -12,11 +12,11 @@ import 'assets/css/sakura.css'
   </div>
   <div class="sakura-bg">
     <div class="sakura">
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
+      <div class="petal" />
+      <div class="petal" />
+      <div class="petal" />
+      <div class="petal" />
+      <div class="petal" />
     </div>
   </div>
 </template>

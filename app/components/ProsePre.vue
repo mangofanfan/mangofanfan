@@ -19,31 +19,33 @@ const props = defineProps<{
     </div>
     <prose-hr />
     <pre
-      :class="['prose-pre__pre block font-maple-mono max-w-full overflow-x-auto', props.class]"
+      :class="[
+        'shiki px-2 py-1 prose-pre__pre block font-maple-mono max-w-full overflow-x-auto',
+        props.class,
+      ]"
     ><slot /></pre>
   </div>
 </template>
 
 <style>
 .shiki {
-  padding: 0;
   font-size: 1rem;
 }
 
 /* 行号 */
 .shiki code {
   counter-reset: line;
+  font-family: var(--font-maple-mono), monospace;
 }
 .shiki .line {
   counter-increment: line;
-  font-family: var(--font-maple-mono), monospace;
 }
 .shiki .line::before {
   content: counter(line);
   display: inline-block;
-  width: 2.5rem;
+  width: 2rem;
   text-align: right;
-  margin-right: 0.75rem;
+  margin-right: 0.5rem;
   color: color-mix(in srgb, currentColor 30%, transparent);
   user-select: none;
 }

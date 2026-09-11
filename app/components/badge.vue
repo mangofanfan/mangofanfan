@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const { level } = defineProps<{
-  level: 'fan' | 'info' | 'warning' | 'danger'
-  text?: string
-}>()
+import type { BadgeArg } from '~/components/bagde.shared.ts'
+
+const { level } = defineProps<BadgeArg>()
 
 const levelClass = ref('')
 

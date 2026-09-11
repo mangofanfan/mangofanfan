@@ -65,7 +65,7 @@ watch(isAsideCollapsed, (newVal) => {
           }
         "
       >
-        <icon name="fa6-solid:ellipsis" />
+        <iconify-icon set="fa6-solid" name="ellipsis" />
       </fan-button>
     </teleport>
   </client-only>

@@ -7,16 +7,18 @@ import AppHeader from '~/components/app-header.vue'
     <header class="sticky top-3 z-10">
       <app-header />
     </header>
-    <app-secondbar>
-      <div class="sidebar-col">
-        <NuxtLink to="/blog">
-          <card-button>博客列表</card-button>
-        </NuxtLink>
-      </div>
+    <div class="flex flex-row gap-x-3">
+      <app-secondbar>
+        <div class="sidebar-col">
+          <NuxtLink to="/blog">
+            <card-button>博客列表</card-button>
+          </NuxtLink>
+        </div>
+      </app-secondbar>
       <div class="main-col">
         <slot />
       </div>
-    </app-secondbar>
+    </div>
     <footer>
       <app-footer />
     </footer>
