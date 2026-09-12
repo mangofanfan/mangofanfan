@@ -4,6 +4,7 @@ export interface WorkspaceTabEntry {
   label: string
   icon: string
   content: any
+  divide: boolean
 }
 
 export interface WorkspaceTabsContext {

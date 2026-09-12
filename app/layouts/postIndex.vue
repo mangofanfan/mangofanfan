@@ -20,9 +20,6 @@ watch(isAutoMode, (newVal) => {
     </header>
     <div class="flex flex-row gap-x-3">
       <app-secondbar>
-        <NuxtLink class="block" to="/">
-          <card-button class="bg-blur">芒果主页</card-button>
-        </NuxtLink>
         <NuxtLink class="block" to="/blog">
           <card-button class="bg-blur">芒果博客</card-button>
         </NuxtLink>

@@ -25,6 +25,9 @@ useSeoMeta({
         <nuxt-link to="/toy/knowledge/license">
           <fan-button level="info">许可证</fan-button>
         </nuxt-link>
+        <nuxt-link to="/toy/knowledge/css">
+          <fan-button level="info">CSS</fan-button>
+        </nuxt-link>
       </div>
     </card>
 
@@ -34,6 +37,16 @@ useSeoMeta({
       <div class="flex flex-row gap-x-3">
         <nuxt-link to="/toy/project/nodejs">
           <fan-button level="info">Node.js 项目结构</fan-button>
+        </nuxt-link>
+      </div>
+    </card>
+
+    <card extraClass="px-4 py-3">
+      <fan-h3>自娱自乐中</fan-h3>
+      <prose-hr />
+      <div class="flex flex-row gap-x-3">
+        <nuxt-link to="/toy/self/log">
+          <fan-button level="info">芒果网日志</fan-button>
         </nuxt-link>
       </div>
     </card>

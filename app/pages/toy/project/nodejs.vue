@@ -12,11 +12,15 @@ const { data: package_json_ast } = await useAsyncData('project-package-json', ()
   $fetch('/api/markdown/project/package-json')
 )
 
-const { data: gitignore_ast } = await useAsyncData('gitignore-json', () =>
+const { data: gitignore_ast } = await useAsyncData('project-gitignore', () =>
   $fetch('/api/markdown/project/gitignore')
 )
 
-const { data: readme_md_ast } = await useAsyncData('readme-md', () =>
+const { data: changelog_md_ast } = await useAsyncData('project-changelog-md', () =>
+  $fetch('/api/markdown/project/changelog')
+)
+
+const { data: readme_md_ast } = await useAsyncData('project-readme-md', () =>
   $fetch('/api/markdown/project/readme')
 )
 </script>
@@ -31,18 +35,22 @@ const { data: readme_md_ast } = await useAsyncData('readme-md', () =>
         只能在浏览器中运行的处境。
       </prose-p>
       <prose-p>
-        于是，开发者们可以使用 JavaScript 更方便快速地开发以往更加麻烦的功能，包括当今的众多 AI
+        于是，开发者们可以使用 JavaScript 更方便快速地开发以往更加麻烦的功能，包括当今的一些 AI
         Harness。
       </prose-p>
     </card>
 
-    <card extraClass="p-0">
-      <workspace-tabs default-tab="package.json">
-        <workspace-tab-panel label=".gitignore" icon="git-branch" :content="gitignore_ast" />
-        <workspace-tab-panel label="package.json" icon="json" :content="package_json_ast" />
-        <workspace-tab-panel label="README.md" icon="markdown" :content="readme_md_ast" />
-      </workspace-tabs>
-    </card>
+    <workspace-tabs default-tab="package.json">
+      <workspace-tab-panel label=".gitignore" icon="git-branch" :content="gitignore_ast" />
+      <workspace-tab-panel label="package.json" icon="json" :content="package_json_ast" />
+      <workspace-tab-panel
+        label="CHANGELOG.md"
+        icon="markdown"
+        :content="changelog_md_ast"
+        :divide="true"
+      />
+      <workspace-tab-panel label="README.md" icon="markdown" :content="readme_md_ast" />
+    </workspace-tabs>
   </div>
 </template>
 

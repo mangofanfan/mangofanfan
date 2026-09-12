@@ -1,6 +1,6 @@
 ---
-title: 已化身 牧羊基本犬盘
-description: 应该会是最后一次网站搬家了 ~
+title: 芒果帆帆 已化身 牧羊基本犬盘
+description: 一切的起因都是那一场苹果秋季发布会……
 date: 2026-09-11
 tags: ["网络", "Apple 发布会", "iPhone"]
 ---

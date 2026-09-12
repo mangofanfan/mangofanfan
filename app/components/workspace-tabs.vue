@@ -35,6 +35,7 @@ const entries = computed<WorkspaceTabEntry[]>(() =>
       label: String(v.props!.label),
       icon: String(v.props!.icon),
       content: String(v.props!.content),
+      divide: Boolean(v.props!.divide),
     }))
 )
 
@@ -78,41 +79,49 @@ function onKeydown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <div class="workspace-tabs flex flex-row divide-x divide-dashed divide-gray-400">
+  <card
+    extraClass="p-0"
+    class="workspace-tabs flex flex-row divide-x divide-dashed divide-gray-400"
+  >
     <div
       ref="listEl"
       role="tablist"
-      class="workspace-tabs-list px-2 py-2 flex-0 basis-48 shrink-0 relative"
+      class="workspace-tabs-list px-2 py-2 bg-gray-100 rounded-l-lg flex-0 basis-60 shrink-0 relative"
       @keydown="onKeydown"
     >
       <div class="flex flex-col items-start gap-y-1 sticky top-20">
-        <button
+        <div
+          class="w-full"
           v-for="entry in entries"
           :key="entry.label"
           :id="`${tabsId}-${entry.label}-tab`"
-          type="button"
-          role="tab"
-          :aria-selected="isActive(entry.label)"
-          :aria-controls="`${tabsId}-${entry.label}-panel`"
-          :tabindex="isActive(entry.label) ? 0 : -1"
-          :class="[
-            'workspace-tabs-trigger block font-misans cursor-pointer border rounded-lg w-full',
-            'flex flex-row gap-x-2 items-center px-3 py-1',
-            isActive(entry.label)
-              ? 'border-fan-500 bg-fan-300 text-gray-800'
-              : 'border-gray-200 bg-gray-50 text-gray-500 hover:bg-fan-100 hover:border-fan-400 hover:text-gray-800',
-          ]"
-          @click="select(entry.label)"
         >
-          <iconify-icon set="codicon" :name="entry.icon" />
-          <span class="font-maple-mono">{{ entry.label }}</span>
-        </button>
+          <fan-hr v-if="entry.divide" />
+          <button
+            type="button"
+            role="tab"
+            :aria-selected="isActive(entry.label)"
+            :aria-controls="`${tabsId}-${entry.label}-panel`"
+            :tabindex="isActive(entry.label) ? 0 : -1"
+            :class="[
+              'workspace-tabs-trigger block font-misans cursor-pointer border rounded-lg w-full',
+              'flex flex-row gap-x-2 items-center px-3 py-1',
+              isActive(entry.label)
+                ? 'border-fan-500 bg-fan-300 text-gray-800'
+                : 'border-gray-400 bg-gray-200 text-gray-600 hover:bg-fan-100 hover:border-fan-400 hover:text-gray-800',
+            ]"
+            @click="select(entry.label)"
+          >
+            <iconify-icon set="codicon" :name="entry.icon" />
+            <span class="font-maple-mono">{{ entry.label }}</span>
+          </button>
+        </div>
       </div>
     </div>
     <div class="px-2 py-2 flex-1 min-w-0">
       <slot />
     </div>
-  </div>
+  </card>
 </template>
 
 <style scoped></style>

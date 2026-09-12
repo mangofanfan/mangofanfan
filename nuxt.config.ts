@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true, // 从入口路由沿链接爬取所有页面（含所有博客文章）
       routes: ['/'], // 入口：首页
-      ignore: ['/api/**'], // API 不预渲染，留给 Worker 运行时执行
+      ignore: ['/api/markdown/**', '/api/hitokoto'], // 部分 API 不预渲染，留给 Worker 运行时执行
     },
 
     cloudflare: {

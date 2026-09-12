@@ -6,10 +6,14 @@ defineProps<{
   label: string
   icon: string
   content: any
+  divide?: boolean
 }>()
 
 const injected = inject(workspaceTabsKey, null)
-if (!injected) throw new Error('<workspace-tab-panel> 必须放在 <workspace-tabs> 内部使用')
+if (!injected) {
+  // noinspection RequiredAttributes,VueMissingComponentImportInspection
+  throw new Error('<workspace-tab-panel> 必须放在 <workspace-tabs> 内部使用')
+}
 const ctx = injected
 </script>
 
