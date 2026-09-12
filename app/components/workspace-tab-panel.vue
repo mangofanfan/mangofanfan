@@ -2,12 +2,15 @@
 import { inject } from 'vue'
 import { workspaceTabsKey } from './workspace-tabs.shared'
 
-defineProps<{
+interface Props {
   label: string
   icon: string
   content: any
   divide?: boolean
-}>()
+  iconSet?: string
+}
+
+withDefaults(defineProps<Props>(), { divide: false, iconSet: 'codicon' })
 
 const injected = inject(workspaceTabsKey, null)
 if (!injected) {

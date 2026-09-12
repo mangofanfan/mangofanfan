@@ -24,8 +24,18 @@ const readableDate = (originString: string) => {
 
     <div class="commits flex flex-col border-gray-300 border-2 rounded-lg divide-y divide-gray-300">
       <div class="commit-item px-4 py-2" v-for="commit in commits">
-        <prose-p>{{ commit.message }}</prose-p>
-        <prose-p>{{ readableDate(commit.date) }}</prose-p>
+        <div class="w-full flex flex-col md:flex-row items-center">
+          <prose-p>{{ commit.message }}</prose-p>
+          <fan-button level="fan" class="w-full md:w-24" style="margin-left: auto">
+            {{ commit.short }}
+          </fan-button>
+        </div>
+        <div class="w-full flex flex-col md:flex-row items-center">
+          <prose-p>{{ readableDate(commit.date) }}</prose-p>
+          <prose-code class="line-clamp-1 max-w-full" style="margin-left: auto">
+            {{ commit.hash }}
+          </prose-code>
+        </div>
       </div>
     </div>
   </div>

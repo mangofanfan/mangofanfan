@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  set: 'codicon' | 'fa6-solid'
+  set: string
   name: string
 }>()
 </script>

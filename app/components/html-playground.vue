@@ -21,10 +21,10 @@ onMounted(() => {
 
 <template>
   <div class="html-playground-source hidden" ref="html-playground-source">
-    <head ref="html-playground-head" />
-    <body ref="html-playground-body">
+    <component is="head" ref="html-playground-head" />
+    <component is="body" ref="html-playground-body">
       <slot />
-    </body>
+    </component>
   </div>
   <iframe
     v-if="ready"

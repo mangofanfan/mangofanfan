@@ -39,6 +39,13 @@
         title="博客 日志"
         content="llo～(∠·ω< )⌒★"
       />
+      <link-display-card
+        id="position-5"
+        class="position"
+        to="/toy"
+        title="妙妙小玩具"
+        content="生活磨平我的妙脆角，我选择再长一对"
+      />
       <card class="w-full flex flex-col gap-y-2">
         <fan-h4>外部链接</fan-h4>
         <social-links />
@@ -104,6 +111,11 @@ div.blank {
   #position-4 {
     top: 100px;
     right: -32px;
+  }
+
+  #position-5 {
+    top: 200px;
+    right: -64px;
   }
 }
 </style>

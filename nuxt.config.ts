@@ -74,6 +74,38 @@ export default defineNuxtConfig({
     clientBundle: { scan: true },
   },
 
+  /*
+   * 为什么必须显式声明 renderer.alias，而不是依赖组件的自动发现：
+   *
+   * `<ContentRenderer>` 并不直接使用 Nuxt 的组件自动导入，而是从虚拟模块
+   * `#content/components` 里拿到一个「组件名 → 动态 loader」的映射（见
+   * ContentRenderer.vue 的 resolveVueComponent）。而这个映射在**生产构建**下
+   * 会被过滤：
+   *   nuxt.options.dev || manifest.components.includes(c.pascalName) || c.global
+   * 也就是说，只有「出现在 content 集合里」或「显式 global」的组件才会被写进去，
+   * dev 下则无条件包含全部组件——这正好解释了
+   * 「pnpm run dev 正常、pnpm run build 后失效」的现象。
+   *
+   * 而 app/assets/markdown/** 是经 nitro.serverAssets + /api/markdown/** 在运行时
+   * 下发的独立 Markdown（见下方 nitro.serverAssets），它不属于任何 content 集合，
+   * 因此 manifest.components 里永远不会出现 `:::html-playground` 用到的组件名。
+   * 构建后 ContentRenderer 便只能拿到字符串标签，最终把一个原生标签
+   * `<html-playground>` 原样渲染到页面上。
+   *
+   * renderer.alias 是 @nuxt/content 官方提供的「Markdown 标签 → 自定义组件」映射：
+   * 一方面它会注入 runtimeConfig.public.mdc.components.map 供运行时查表，
+   * 另一方面它的取值会被计入 manifest.components，从而让构建产物里生成
+   * HtmlPlayground 的动态 loader。新增 node 侧 Markdown 里可用的组件时，
+   * 记得同步在这里登记。
+   */
+  content: {
+    renderer: {
+      alias: {
+        'html-playground': 'HtmlPlayground',
+      },
+    },
+  },
+
   // ？！大肥鱼和 GLM 都强强！？
   nitro: {
     // 把构建期的 git log 结果烘焙为 '#changelog' 虚拟模块，

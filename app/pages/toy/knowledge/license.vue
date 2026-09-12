@@ -68,8 +68,12 @@ const PanelBody = defineComponent({
           允许该协议授权的代码被用于其他协议授权的项目。</prose-li
         >
         <prose-li
+          ><badge level="info">Copyright</badge> -
+          保留所有权利，未经授权不允许任何形式的使用。</prose-li
+        >
+        <prose-li
           ><badge level="info">Copyleft</badge> -
-          允许该协议授权的代码自由使用，但衍生项目也需以该协议授权开源。</prose-li
+          允许该协议授权的代码自由使用，但衍生项目也需以该协议授权开源。不等同于完全放弃权利。</prose-li
         >
       </prose-ul>
     </card>

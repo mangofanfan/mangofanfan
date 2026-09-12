@@ -19,7 +19,7 @@ watch(
     <div id="home-teleports" />
     <span class="font-bold text-xl">{{ title }}</span>
     <NuxtLink to="/" style="margin-left: auto">主页</NuxtLink>
-    <NuxtLink to="/blog">日志</NuxtLink>
+    <NuxtLink to="/blog">博客</NuxtLink>
     <NuxtLink to="/toy">玩具</NuxtLink>
     <div id="header-teleports" />
   </card>

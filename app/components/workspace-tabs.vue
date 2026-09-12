@@ -36,6 +36,7 @@ const entries = computed<WorkspaceTabEntry[]>(() =>
       icon: String(v.props!.icon),
       content: String(v.props!.content),
       divide: Boolean(v.props!.divide),
+      iconSet: v.props!['icon-set'] ?? 'codicon',
     }))
 )
 
@@ -112,7 +113,7 @@ function onKeydown(e: KeyboardEvent) {
             ]"
             @click="select(entry.label)"
           >
-            <iconify-icon set="codicon" :name="entry.icon" />
+            <iconify-icon :set="entry.iconSet" :name="entry.icon" />
             <span class="font-maple-mono">{{ entry.label }}</span>
           </button>
         </div>

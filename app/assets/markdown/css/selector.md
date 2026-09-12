@@ -38,7 +38,7 @@ CSS 样式通过选择器与 HTML 元素关联，这样才可以让正确的样�
 
 在一个 `zhi-shi-container` 中包含了四片 `zhi-shi`。在未添加任何样式时，其显示效果如下：
 
-<html-playground>
+::html-playground
 <div class="zhi-shi-container">
     <div>
         <p>芝士一个 div</p>
@@ -53,7 +53,7 @@ CSS 样式通过选择器与 HTML 元素关联，这样才可以让正确的样�
         <p>芝士四个 div</p>
     </div>
 </div>
-</html-playground>
+::
 
 增加一些样式吧，首先给所有的 `div` 都加上边框。
 
@@ -63,7 +63,7 @@ div.zhi-shi-container div {
 }
 ```
 
-<html-playground>
+::html-playground
 <div class="zhi-shi-container">
     <div>
         <p>芝士一个 div</p>
@@ -83,7 +83,7 @@ div.zhi-shi-container div {
     border: 1px solid #6F42C1;
 }
 </style>
-</html-playground>
+::
 
 再给最外围的容器（container）设置一个 flex 纵向布局，添加一些内边距和子元素间距，方便我们观察。
 
@@ -96,7 +96,7 @@ div.zhi-shi-container {
 }
 ```
 
-<html-playground>
+::html-playground
 <div class="zhi-shi-container">
     <div>
         <p>芝士一个 div</p>
@@ -122,7 +122,7 @@ div.zhi-shi-container div {
     border: 1px solid #6F42C1;
 }
 </style>
-</html-playground>
+::
 
 对 div 标签使用的边框出现在了四片芝士上。注意这里，芝士外围的 container 不受 `div.zhi-shi-container div` 边框的影响。
 
@@ -134,7 +134,7 @@ div.zhi-shi-container div.zhi-shi {
 }
 ```
 
-<html-playground>
+::html-playground
 <div class="zhi-shi-container">
     <div>
         <p>芝士一个 div</p>
@@ -163,7 +163,7 @@ div.zhi-shi-container div.zhi-shi {
     background-color: #9ECBFF;
 }
 </style>
-</html-playground>
+::
 
 再聪明一些的同学也能猜出对 id `zhi-shi-3` 和 `zhi-shi-4` 应用样式的效果了，比如来给文字换两个颜色：
 
@@ -177,7 +177,7 @@ div.zhi-shi-container div.zhi-shi#zhi-shi-4 {
 }
 ```
 
-<html-playground>
+::html-playground
 <div class="zhi-shi-container">
     <div>
         <p>芝士一个 div</p>
@@ -212,7 +212,7 @@ div.zhi-shi-container div.zhi-shi#zhi-shi-4 {
 color: #0003c5;
 }
 </style>
-</html-playground>
+::
 
 ### 精确选择
 
