@@ -1,5 +1,45 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { execFileSync } from 'node:child_process'
 import tailwindcss from '@tailwindcss/vite'
+
+/**
+ * 构建期读取 git 提交历史，通过 nitro.virtual 烘焙进服务端产物（虚拟模块 `#changelog`）。
+ *
+ * 为什么不能在 Worker 运行时跑 simple-git / child_process：
+ * workerd 既没有 git 二进制，也不支持 node:child_process；server 代码里
+ * 模块顶层的 simpleGit() 会在 Worker 上传校验阶段（Cloudflare 错误码 10021，
+ * workerd 会执行模块顶层代码）直接抛 "t40(...).default is not a function"，
+ * 表现为「部署失败而非构建失败」。
+ * 而 Workers Builds 的构建容器里 git 是可用的（此前 /toy/self/log 预渲染时
+ * /api/changelog 就是在构建容器里成功执行的），所以把取数放在构建期。
+ */
+function loadChangelog(max = 200) {
+  try {
+    const out = execFileSync(
+      'git',
+      [
+        'log',
+        '-n',
+        String(max),
+        '--no-merges',
+        '--pretty=format:%H\u001f%h\u001f%aI\u001f%an\u001f%s',
+      ],
+      { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
+    ).trim()
+
+    return out
+      .split('\n')
+      .filter(Boolean)
+      .map((line) => {
+        // \u001f（单元分隔符）做字段分隔，避免与提交信息中的任意字符冲突
+        const [hash, short, date, author, message] = line.split('\u001f')
+        return { hash, short, date, author, message }
+      })
+  } catch {
+    // 非 git 仓库 / 无 git 环境时兜底为空数组，保证构建不因此失败
+    return []
+  }
+}
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -34,8 +74,14 @@ export default defineNuxtConfig({
     clientBundle: { scan: true },
   },
 
-  // ？！大肥鱼强强！？
+  // ？！大肥鱼和 GLM 都强强！？
   nitro: {
+    // 把构建期的 git log 结果烘焙为 '#changelog' 虚拟模块，
+    // server/api/changelog.get.ts 直接 import，Worker 运行时零外部依赖。
+    virtual: {
+      '#changelog': `export const changelog = ${JSON.stringify(loadChangelog(200))}`,
+    },
+
     // 把独立 Markdown 文档目录挂载为服务端资源（`assets:markdown`）。
     // 这样 /api/markdown/** 可以直接按路径取文件，新增 .md 无需改动任何代码。
     // 注意 dir 是相对 Nitro 的 srcDir（即项目的 server/ 目录）解析的。
