@@ -6,27 +6,13 @@
 import { computed, onBeforeUnmount, onWatcherCleanup, ref, watch } from 'vue'
 import type { ShallowRef } from 'vue'
 import { arrow, autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/vue'
-
-/** Floating UI 支持的全部方位（top / bottom / left / right + -start / -end） */
-export type TipPlacement =
-  | 'top'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom'
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'left'
-  | 'left-start'
-  | 'left-end'
-  | 'right'
-  | 'right-start'
-  | 'right-end'
+import type { FloatingPlacement } from '~/composable/floatingUi'
 
 /** TermTip.vue 的 defineProps 形状（与组件保持一致） */
 export interface TipOptions {
   term: string
   description?: string
-  placement?: TipPlacement
+  placement?: FloatingPlacement
   offset?: number
   showDelay?: number
   hideDelay?: number

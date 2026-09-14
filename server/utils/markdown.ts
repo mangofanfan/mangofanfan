@@ -35,7 +35,7 @@ function getHighlighter() {
   return highlighter
 }
 
-export async function parseMarkdownDocument(path: string) {
+export async function getRawMarkdownSource(path: string) {
   if (!DOCUMENT_PATH_RE.test(path)) {
     throw createError({
       statusCode: 400,
@@ -52,7 +52,11 @@ export async function parseMarkdownDocument(path: string) {
     })
   }
 
-  return await parseMarkdown(source, {
+  return source
+}
+
+export async function parseMarkdownDocument(path: string) {
+  return await parseMarkdown(await getRawMarkdownSource(path), {
     rehype: {
       plugins: {
         highlight: { options: { highlighter: await getHighlighter() } },

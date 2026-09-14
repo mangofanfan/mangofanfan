@@ -9,7 +9,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div :class="['card border border-fan-600 rounded-lg', extraClass]">
+  <div :class="['card border border-fan-600 dark:border-fan-200 rounded-lg', extraClass]">
     <slot name="default" />
   </div>
 </template>

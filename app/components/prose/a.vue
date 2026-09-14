@@ -21,14 +21,14 @@ const self = computed(() => inner.value && route.path === href)
     <slot />
   </span>
   <NuxtLink
-    class="font-misans text-cyan-700 hover:underline hover:text-cyan-950"
+    class="font-misans text-cyan-700 hover:underline hover:text-cyan-950 dark:hover:text-cyan-300"
     v-else-if="inner"
     :href="href"
   >
     <slot />
   </NuxtLink>
   <a
-    class="outer-link font-misans text-cyan-700 hover:underline hover:text-cyan-950"
+    class="outer-link font-misans text-cyan-700 hover:underline hover:text-cyan-950 dark:hover:text-cyan-300"
     v-else
     :href="href"
     :rel="rel ? rel : 'nofollow'"
@@ -46,6 +46,6 @@ a.outer-link:before {
   margin-right: 4px;
   border: 1px solid var(--color-cyan-600);
   border-radius: 6px;
-  background-color: var(--color-cyan-100);
+  background-color: var(--color-cyan-50);
 }
 </style>

@@ -20,3 +20,19 @@
   --font-misans: MiSans, sans-serif;
   --font-maple-mono: Maple Mono CN, monospace;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 颜色主题 */
+body {
+  color: rgb(16 16 16);
+  background-color: rgba(245 245 245 / 1);
+  transition-property: color, background-color;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+}
+
+body.dark {
+  color: rgb(238 238 238);
+  background-color: #1a1a1a;
+}

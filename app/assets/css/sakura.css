@@ -12,7 +12,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     min-width: 100dvw;
-    background: rgba(245, 245, 245, 1);
 }
 
 .sakura {
@@ -28,6 +27,13 @@ body {
     border-radius: 50%;
     transform: scale(200%);
     animation: 7000ms infinite linear rotate;
+    transition-property: background-color;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
+}
+
+.dark .sakura {
+    background-color: rgb(20 20 20);
 }
 
 .sakura:hover {
@@ -46,6 +52,13 @@ body {
     opacity: 0;
     transform-origin: bottom;
     animation: 6000ms infinite ease-in-out fade;
+    transition-property: background-color;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
+}
+
+.dark .petal {
+    background-color: #e0dd6b;
 }
 
 .petal:nth-child(2) {

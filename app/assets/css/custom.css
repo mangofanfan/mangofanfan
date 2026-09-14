@@ -1,5 +1,21 @@
+:root {
+    --term-tip-color: #185fa5;
+    --term-tip-content-color: #042c53;
+    --term-tip-background-color: #fff;
+}
+
+:root .dark {
+    --term-tip-color: #7abbff;
+    --term-tip-content-color: #b3c6e0;
+    --term-tip-background-color: #000;
+}
+
 /* 通用背景模糊 */
 .bg-blur {
     background-color: rgb(240 248 255 / 0.5);
     backdrop-filter: blur(8px);
+}
+
+.dark .bg-blur {
+    background-color: rgb(0 0 16 / 0.5);
 }

@@ -41,6 +41,12 @@ function loadChangelog(max = 200) {
   }
 }
 
+/**
+ * 已被扩充过组件清单的模板，避免 dev 下反复 generateApp 时把 getContents 层层包裹。
+ * 模板对象本身会被 Nuxt 跨次复用，所以用 WeakSet 按对象身份去重即可。
+ */
+const patchedTemplates = new WeakSet<object>()
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -57,6 +63,7 @@ export default defineNuxtConfig({
       title: '芒果.js',
       titleTemplate: '%s - mango.js',
       meta: [
+        { name: 'color-scheme', content: 'light dark' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: '芒果帆帆的全新个人网站喵' },
         { name: 'keywords', content: '芒果帆帆, MangoFanFan, Nuxt' },
@@ -75,34 +82,68 @@ export default defineNuxtConfig({
   },
 
   /*
-   * 为什么必须显式声明 renderer.alias，而不是依赖组件的自动发现：
+   * 取消 @nuxt/content 在**生产构建**时对 content 组件的过滤。
    *
-   * `<ContentRenderer>` 并不直接使用 Nuxt 的组件自动导入，而是从虚拟模块
-   * `#content/components` 里拿到一个「组件名 → 动态 loader」的映射（见
-   * ContentRenderer.vue 的 resolveVueComponent）。而这个映射在**生产构建**下
-   * 会被过滤：
+   * 背景：`<ContentRenderer>` 不走 Nuxt 的组件自动导入，而是查虚拟模块
+   * `#content/components` 里的「组件名 → 动态 loader」映射（见 ContentRenderer.vue
+   * 的 resolveVueComponent）。该映射在生成时被过滤：
    *   nuxt.options.dev || manifest.components.includes(c.pascalName) || c.global
-   * 也就是说，只有「出现在 content 集合里」或「显式 global」的组件才会被写进去，
-   * dev 下则无条件包含全部组件——这正好解释了
-   * 「pnpm run dev 正常、pnpm run build 后失效」的现象。
+   * dev 下无条件收录全部组件；生产下只收录「content 集合（content/**）里出现过」
+   * 或「显式 global」的组件。
    *
    * 而 app/assets/markdown/** 是经 nitro.serverAssets + /api/markdown/** 在运行时
-   * 下发的独立 Markdown（见下方 nitro.serverAssets），它不属于任何 content 集合，
-   * 因此 manifest.components 里永远不会出现 `:::html-playground` 用到的组件名。
-   * 构建后 ContentRenderer 便只能拿到字符串标签，最终把一个原生标签
-   * `<html-playground>` 原样渲染到页面上。
+   * 下发的独立文档（见下方 serverAssets），不属于任何集合，其中的 `:::xxx` 用到的
+   * 组件名永远不会进入 manifest.components。于是构建后这些标签解析失败，被
+   * @nuxtjs/mdc 兜底 `resolveComponent(pascalCase(tag))`，最终把裸标签
+   * （如 `<HtmlPlayground>`）原样渲染进页面——这就是「dev 正常、build 失效」的原因。
    *
-   * renderer.alias 是 @nuxt/content 官方提供的「Markdown 标签 → 自定义组件」映射：
-   * 一方面它会注入 runtimeConfig.public.mdc.components.map 供运行时查表，
-   * 另一方面它的取值会被计入 manifest.components，从而让构建产物里生成
-   * HtmlPlayground 的动态 loader。新增 node 侧 Markdown 里可用的组件时，
-   * 记得同步在这里登记。
+   * 这些文档随时可能用上新组件，逐个往 `content.renderer.alias` 里登记并不现实，
+   * 所以这里直接把**所有自动导入组件**的 PascalCase 名补进 manifest.components，
+   * 让过滤条件对每个组件都成立。
+   *
+   * 之所以不用 `components: { global: true }`：那会把全部组件静态注册进入口包；
+   * 而只补清单的话，组件仍以动态 loader 形式按需加载，不影响首屏体积。
+   *
+   * 为什么扩充动作要写在模板 getContents 里面、而不是直接写在 'app:templates' 钩子里：
+   * `app.components` 是 Nuxt 内部**同样挂在 'app:templates' 上的钩子**里扫描后赋值的，
+   * 而 nuxt.config 的 hooks 在 initNuxt 开头就被注册、会先于它执行，那时 app.components
+   * 还是空数组。getContents 则是在所有 'app:templates' 钩子跑完之后才被调用的。
+   *
+   * 代价是依赖 @nuxt/content 的内部结构（承载同一个 manifest 对象的模板及其
+   * options.manifest.components），所以下面在结构变化时显式告警而不是静默退化。
    */
-  content: {
-    renderer: {
-      alias: {
-        'html-playground': 'HtmlPlayground',
-      },
+  hooks: {
+    'app:templates'(app) {
+      // @nuxt/content 把同一个 manifest 对象挂在多个模板的 options 上
+      // （content/components.ts、content/manifest.ts 等），这里全部包一层。
+      const targets = app.templates.filter((t) => Array.isArray(t.options?.manifest?.components))
+
+      if (!targets.length) {
+        // 只有当 @nuxt/content 确实注册了模板、但结构已不认识时才告警，
+        // 避免在模块尚未就绪的那次调用里误报。
+        if (app.templates.some((t) => t.filename?.startsWith('content/'))) {
+          console.warn(
+            '[mangofanfan] 未能扩充 @nuxt/content 的组件清单：' +
+              '生产构建的组件过滤仍然生效，app/assets/markdown/** 里用到的组件可能被渲染成裸标签。' +
+              '请检查 @nuxt/content 版本升级后模板结构是否变化。'
+          )
+        }
+        return
+      }
+
+      for (const template of targets) {
+        const generate = template.getContents
+        if (!generate || patchedTemplates.has(template)) continue
+        patchedTemplates.add(template)
+
+        template.getContents = (ctx) => {
+          const { components } = ctx.options.manifest
+          ctx.options.manifest.components = [
+            ...new Set([...components, ...ctx.app.components.map((c) => c.pascalName)]),
+          ]
+          return generate(ctx)
+        }
+      }
     },
   },
 

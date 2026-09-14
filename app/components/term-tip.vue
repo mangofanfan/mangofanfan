@@ -10,9 +10,9 @@
     </TermTip>
 -->
 <script setup lang="ts">
-import { computed, useId, useTemplateRef } from 'vue'
-import { useTip, type TipPlacement } from '~/composable/useTip.ts'
+import type { FloatingPlacement } from '~/composable/floatingUi'
 import type { Strategy } from '@floating-ui/vue'
+import { useTip } from '~/composable/useTip.ts'
 
 interface Props {
   /** 术语标题（同时作为弹窗标题与默认触发文字） */
@@ -20,7 +20,7 @@ interface Props {
   /** 术语解释（纯文本；富文本请用 #content 插槽） */
   description?: string
   /** 弹出方位：top / bottom / left / right（支持 -start / -end 后缀） */
-  placement?: TipPlacement
+  placement?: FloatingPlacement
   /** 弹窗与触发元素的间距（px） */
   offset?: number
   /** 显示 / 隐藏延迟（ms），构成悬停意图去抖 */
@@ -111,7 +111,10 @@ const arrowStyle = computed(() => ({
         <slot name="content" class="font-misans" />
         <hr style="margin: 6px 0" v-if="seeLinks" />
         <div
-          class="term-tip__seeLinks flex flex-row gap-x-2 border border-gray-600 bg-gray-100 rounded-md px-3 py-1"
+          :class="[
+            'term-tip__seeLinks border border-gray-600 bg-gray-100 rounded-md px-3 py-1',
+            'dark:bg-gray-800 flex flex-row gap-x-2',
+          ]"
           v-if="seeLinks"
         >
           <prose-a
@@ -119,9 +122,9 @@ const arrowStyle = computed(() => ({
             v-bind:key="seeLink.name"
             class="block font-misans"
             :href="seeLink.url"
-            target="_blank"
-            >{{ seeLink.name }}</prose-a
           >
+            {{ seeLink.name }}
+          </prose-a>
         </div>
         <span
           ref="arrow"
@@ -138,7 +141,7 @@ const arrowStyle = computed(() => ({
 
 <style scoped>
 .term-tip__trigger {
-  color: #185fa5;
+  color: var(--term-tip-color);
   border-bottom: 1px dashed #378add;
   cursor: help;
 }
@@ -151,9 +154,9 @@ const arrowStyle = computed(() => ({
   width: max-content;
   max-width: 320px;
   padding: 10px 14px;
-  background: #fff;
-  color: #042c53;
-  border: 1px solid #185fa5;
+  background: var(--term-tip-background-color);
+  color: var(--term-tip-content-color);
+  border: 1px solid var(--term-tip-color);
   border-radius: 8px;
   font-size: 13px;
   line-height: 1.7;
@@ -172,7 +175,7 @@ const arrowStyle = computed(() => ({
 
 .term-tip__title {
   display: block;
-  color: #185fa5;
+  color: var(--term-tip-color);
   font-weight: 600;
   margin-bottom: 2px;
 }
@@ -184,28 +187,28 @@ const arrowStyle = computed(() => ({
   position: absolute;
   width: 10px;
   height: 10px;
-  background: #fff;
+  background: var(--term-tip-background-color);
   transform: rotate(45deg);
 }
 .term-tip__arrow--bottom {
   top: -5.5px;
-  border-top: 1.5px solid #185fa5;
-  border-left: 1.5px solid #185fa5;
+  border-top: 1.5px solid var(--term-tip-color);
+  border-left: 1.5px solid var(--term-tip-color);
 }
 .term-tip__arrow--top {
   bottom: -5.5px;
-  border-bottom: 1.5px solid #185fa5;
-  border-right: 1.5px solid #185fa5;
+  border-bottom: 1.5px solid var(--term-tip-color);
+  border-right: 1.5px solid var(--term-tip-color);
 }
 .term-tip__arrow--left {
   right: -5.5px;
-  border-top: 1.5px solid #185fa5;
-  border-right: 1.5px solid #185fa5;
+  border-top: 1.5px solid var(--term-tip-color);
+  border-right: 1.5px solid var(--term-tip-color);
 }
 .term-tip__arrow--right {
   left: -5.5px;
-  border-left: 1.5px solid #185fa5;
-  border-bottom: 1.5px solid #185fa5;
+  border-left: 1.5px solid var(--term-tip-color);
+  border-bottom: 1.5px solid var(--term-tip-color);
 }
 </style>
 

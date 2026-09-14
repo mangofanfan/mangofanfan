@@ -42,6 +42,16 @@ useSeoMeta({
     </card>
 
     <card extraClass="px-4 py-3">
+      <fan-h3>资料备份</fan-h3>
+      <prose-hr />
+      <div class="flex flex-row gap-x-3">
+        <nuxt-link to="/toy/backup/textmate">
+          <fan-button level="info">Some TextMate Lessons</fan-button>
+        </nuxt-link>
+      </div>
+    </card>
+
+    <card extraClass="px-4 py-3">
       <fan-h3>自娱自乐中</fan-h3>
       <prose-hr />
       <div class="flex flex-row gap-x-3">

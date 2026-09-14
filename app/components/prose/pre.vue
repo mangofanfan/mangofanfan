@@ -11,7 +11,10 @@ const props = defineProps<{
 
 <template>
   <div
-    class="border border-fuchsia-500 bg-fuchsia-50 rounded max-w-full overflow-hidden flex flex-col py-2"
+    :class="[
+      'border border-fuchsia-500 bg-fuchsia-50 rounded max-w-full overflow-hidden flex flex-col py-2',
+      'dark:border-yellow-600 dark:bg-gray-800',
+    ]"
   >
     <div class="px-3 flex flex-row gap-x-2 items-center">
       <prose-code>{{ language ? language : 'Unknown' }}</prose-code>

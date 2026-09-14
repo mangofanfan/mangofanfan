@@ -5,7 +5,12 @@ defineProps<{
 </script>
 
 <template>
-  <div class="px-6 py-2 border border-gray-700 rounded-lg bg-gray-100">
+  <div
+    :class="[
+      'px-6 py-2 border border-gray-700 rounded-lg bg-gray-100 ',
+      'dark:border-gray-200 dark:bg-gray-800',
+    ]"
+  >
     <slot />
     <div v-if="from">
       <p>{{ from }}</p>
