@@ -7,7 +7,7 @@
         <slot />
       </card>
       <avatar
-        class="size-full border-2 md:size-80 md:border-4"
+        class="size-40 border-2 md:size-80 md:border-4"
         src="/avatar.png"
         alt="Mango FanFan Q"
       />

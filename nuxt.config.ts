@@ -56,7 +56,14 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ['@nuxt/image', '@nuxt/icon', '@nuxt/eslint', '@nuxt/content', 'nitro-cloudflare-dev'],
+  modules: [
+   '@nuxt/image',
+   '@nuxt/icon',
+   '@nuxt/eslint',
+   '@nuxt/content',
+   'nitro-cloudflare-dev',
+   '@nuxtjs/color-mode'
+  ],
 
   app: {
     head: {

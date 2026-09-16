@@ -10,6 +10,11 @@ import 'assets/css/sakura.css'
       <NuxtPage />
     </NuxtLayout>
   </div>
+
+  <div class="fixed bottom-6 right-6 flex flex-row-reverse items-end gap-x-2">
+    <app-theme-toggle />
+  </div>
+
   <div class="sakura-bg">
     <div class="sakura">
       <div class="petal" />

@@ -29,7 +29,7 @@ body {
   background-color: rgba(245 245 245 / 1);
 }
 
-body.dark {
+.dark body {
   color: rgb(238 238 238);
   background-color: #1a1a1a;
 }

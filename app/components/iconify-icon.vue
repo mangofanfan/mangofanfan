@@ -2,11 +2,12 @@
 defineProps<{
   set: string
   name: string
+  size?: string
 }>()
 </script>
 
 <template>
-  <icon :name="`${set}:${name}`" />
+  <icon :style="{ fontSize: size ?? '16px' }" :name="`${set}:${name}`" />
 </template>
 
 <style scoped></style>

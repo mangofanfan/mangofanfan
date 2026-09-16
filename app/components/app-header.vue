@@ -18,8 +18,7 @@ watch(
   <card class="bg-blur w-full h-14 flex flex-row gap-x-4 items-center" extraClass="px-6 py-2">
     <div id="home-teleports" />
     <span class="font-bold text-xl">{{ title }}</span>
-    <app-theme-toggle-button style="margin-left: auto" />
-    <NuxtLink to="/">主页</NuxtLink>
+    <NuxtLink style="margin-left: auto" to="/">主页</NuxtLink>
     <NuxtLink to="/blog">博客</NuxtLink>
     <NuxtLink to="/toy">玩具</NuxtLink>
     <div id="header-teleports" />

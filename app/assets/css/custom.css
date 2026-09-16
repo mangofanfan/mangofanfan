@@ -4,7 +4,7 @@
     --term-tip-background-color: #fff;
 }
 
-:root .dark {
+:root.dark {
     --term-tip-color: #7abbff;
     --term-tip-content-color: #b3c6e0;
     --term-tip-background-color: #000;
