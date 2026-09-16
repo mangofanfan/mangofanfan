@@ -56,11 +56,12 @@ const contentStyle = computed<{
     :class="[
       'translate-toc relative border border-green-300 bg-green-50 rounded-md size-10',
       'hover:bg-green-300 hover:border-green-500 cursor-pointer',
+      'dark:border-green-600 dark:bg-green-900 hover:dark:bg-green-600 hover:dark:border-green-400',
       'flex flex-row items-center justify-center',
     ]"
     @click="toggle"
   >
-    <iconify-icon class="text-green-700" set="fa6-solid" name="list-ul" />
+    <iconify-icon class="text-green-700 dark:text-green-200" set="fa6-solid" name="list-ul" />
   </div>
 
   <teleport to="body">
@@ -70,6 +71,7 @@ const contentStyle = computed<{
         :class="[
           'translate-toc__content w-100 h-fit rounded-lg z-9999 p-2',
           'border border-green-700 bg-green-50',
+          'dark:border-green-200 dark:bg-green-900',
         ]"
         :id="tocId"
         ref="floating"

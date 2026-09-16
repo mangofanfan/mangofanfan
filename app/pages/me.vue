@@ -8,6 +8,14 @@ definePageMeta({
   <div class="flex flex-col gap-y-4 items-center">
     <fan-image class="w-full max-w-120" src="屏幕截图 2025-09-24 143856.png" />
     <fan-h1>芒果帆帆的可公开情报</fan-h1>
+    <prose-p>你好，这里是 <term-tip-mangofan /> 。</prose-p>
+    <prose-p>这是一个用 <term-tip-nuxt /> 实现的新的博客网站，应该会就此安定一会。</prose-p>
+    <div class="flex flex-row gap-x-2">
+      <badge level="fan">在读本科生</badge>
+      <badge level="info">独立开发者</badge>
+      <badge level="info">游戏主播</badge>
+      <badge level="info">文字与翻译工作者</badge>
+    </div>
     <card extraClass="px-4 py-3">
       <ul class="flex flex-col gap-y-1">
         <li>可用称呼：<badge level="fan">芒果帆帆</badge> <badge level="info">芒果鱼</badge></li>
@@ -45,34 +53,34 @@ definePageMeta({
     <fan-h2>教育经历</fan-h2>
     <div class="w-fit flex flex-col gap-y-3">
       <card>
-        <p class="text-xl font-misans">
+        <prose-p class="text-xl">
           <span class="font-bold">南京市将军山小学</span>
-        </p>
-        <p class="text-lg font-misans text-gray-600">莫等闲，白了少年头，空悲切。</p>
+        </prose-p>
+        <prose-p class="text-lg text-gray-600">莫等闲，白了少年头，空悲切。</prose-p>
         <prose-a class="font-misans" href="http://jjsxx.jnjy.net.cn/">官方网站</prose-a>
       </card>
       <card>
-        <p class="text-xl font-misans">
+        <prose-p class="text-xl">
           <span class="font-bold">南京市将军山中学</span>
-        </p>
-        <p class="text-lg font-misans text-gray-600">大鹏一日乘风起，扶摇直上九万里。</p>
+        </prose-p>
+        <prose-p class="text-lg text-gray-600">大鹏一日乘风起，扶摇直上九万里。</prose-p>
         <prose-a class="font-misans" href="http://jjszx.jnjy.net.cn/">官方网站</prose-a>
       </card>
       <card>
-        <p class="text-xl font-misans">
+        <prose-p class="text-xl">
           <span class="font-bold">南京市东山高级中学</span> |
           <span class="text-gray-600">理科（物理 · 化学 · 地理） 普通班</span>
-        </p>
-        <p class="text-lg font-misans text-gray-600">汇聚最优学子，打造最强高中。</p>
+        </prose-p>
+        <prose-p class="text-lg text-gray-600">汇聚最优学子，打造最强高中。</prose-p>
         <prose-a class="font-misans" href="http://dsgjzx.jnjy.net.cn/">官方网站</prose-a>
       </card>
       <card>
-        <p class="text-xl font-misans">
+        <prose-p class="text-xl">
           <span class="font-bold">南京邮电大学</span> | <span class="text-gray-600">本科</span>
-        </p>
-        <p class="text-lg font-misans text-gray-600">
+        </prose-p>
+        <prose-p class="text-lg text-gray-600">
           计算机学院、软件学院、网络空间安全学院 软件工程
-        </p>
+        </prose-p>
         <prose-a class="font-misans" href="https://www.njupt.edu.cn/">官方网站</prose-a>
       </card>
     </div>

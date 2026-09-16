@@ -13,6 +13,13 @@ export default defineContentConfig({
         date: z.date(),
       }),
     }),
+    nuxtLog: defineCollection({
+      type: 'page',
+      source: 'nuxt-log/*.md',
+      schema: z.object({
+        date: z.date(),
+      }),
+    }),
     mcfpp: defineCollection({
       type: 'page',
       source: 'mcfpp/*.md',

@@ -9,8 +9,8 @@ definePageMeta({
 
 useSeoMeta({
   title: '编写 TextMate 语法：一些需要学习的课程（翻译）',
-  description:
-    'Dr.Matt Neuburg 的技术博客 Writing a TextMate Grammar: Some Lessons Learned 的非官方中文翻译。',
+  description: `Dr.Matt Neuburg 的技术博客 Writing a TextMate Grammar: Some Lessons Learned 的非官方中文翻译。
+    尽管 TextMate 已经存在了很长时间（按计算机的年份来算），而且已经出现了许多语言包，但令人惊讶的是，编写语言语法的过程仍然缺乏文档记录。`,
 })
 
 const { data: textmate_ast } = useAsyncData('backup-textmate', () =>
@@ -131,7 +131,7 @@ const copyRawMarkdown = ref('你需要复制本文的 Markdown 格式吗？')
           level="fan"
           @click="
             () => {
-              copyRawMarkdown = getOriginMarkdown(textmate_raw)
+              if (textmate_raw) copyRawMarkdown = getOriginMarkdown(textmate_raw)
               trWarning = false
             }
           "
@@ -142,7 +142,7 @@ const copyRawMarkdown = ref('你需要复制本文的 Markdown 格式吗？')
           level="info"
           @click="
             () => {
-              copyRawMarkdown = getTranslationMarkdown(textmate_raw)
+              if (textmate_raw) copyRawMarkdown = getTranslationMarkdown(textmate_raw)
               trWarning = false
             }
           "
@@ -153,7 +153,7 @@ const copyRawMarkdown = ref('你需要复制本文的 Markdown 格式吗？')
           level="warning"
           @click="
             () => {
-              copyRawMarkdown = textmate_raw
+              if (textmate_raw) copyRawMarkdown = textmate_raw
               trWarning = true
             }
           "

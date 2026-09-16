@@ -1,26 +1,26 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="page-layout">
-    <slot />
-    <div>
-      <card class="bottom-section flex flex-col gap-y-2">
-        <link-display-card to="/" title="返回首页" content="查看芒果的其他有关内容 ~" />
-        <social-links />
-      </card>
-    </div>
+  <div class="page-layout flex flex-col gap-y-6 w-full">
+    <header class="sticky top-3 z-10">
+      <app-header />
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <app-footer />
+    </footer>
   </div>
 </template>
 
 <style scoped>
 div.page-layout {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.bottom-section {
-  margin-top: 18px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 3%;
 }
 </style>

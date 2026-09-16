@@ -19,6 +19,8 @@
 所以有了这篇译文。
 
 #t
+> 此为非官方翻译，且已获得作者授权。
+
 > 只在翻译栏中出现的引用块是**译注**，也就是芒果帆帆的补充。
 > 
 > 原文中作者使用的编辑器是 TextMate，一款 macOS 平台的代码编辑器，也正是 TextMate 语法文件的创建和推广者。
@@ -710,7 +712,7 @@ Those include rules, in turn, are virtually replaced by the rules that their val
 The value of an `include` rule can alternatively be a scope name. This is a good way to inject an entire grammar inside yours. For example, in my AsciiDoc bundle, I assume that the contents of a passthrough block (never mind what that is) will be XML. Therefore, inside my match rule for a passthrough block, I have an `include` rule specifying `text.xml`. This causes the whole grammar from the XML bundle to come into play in this region of my document. In addition, TextMate 2 permits a single named item to be plucked from a foreign repository using the syntax `scopeName#itemName`.
 
 #t
-`include` 规则的值也可以是一个*作用域名称*。这是将整个语法注入到你自己语法中的一种好方法。例如，在我的 AsciiDoc bundle 中，我假定透传块（passthrough block，别管它是什么）的内容将是 XML。因此，在我为透传块编写的匹配规则中，我有一条 `include` 规则，指定了 `text.xml`。这会让 XML bundle 中的整个语法在我的文档的这一区域中发挥作用。此外，TextMate 2 允许使用 `scopeName#itemName` 这一语法从外部代码仓库中摘取单个命名项。
+`include` 规则的值也可以是一个*作用域名称*。这是将整个语法注入到你自己语法中的一种好方法。例如，在我的 AsciiDoc bundle 中，我假定透传块（passthrough block，别管它是什么）的内容将是 XML。因此，在我为透传块编写的匹配规则中，我有一条 `include` 规则，指定了 `text.xml`。这会让 XML bundle 中的整个语法在我的文档的这一区域中发挥作用。此外，TextMate 2 允许使用 `scopeName#itemName` 这一语法从外部 repository 中摘取单个命名项。
 ::
 
 ::translate-paragraph

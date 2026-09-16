@@ -19,13 +19,26 @@ body {
     border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+}
+
 /* 鼠标悬停时滑块加深 */
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
 }
 
 /* 现代标准属性（适用于 Firefox 等） */
 * {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+html:has(body.dark),
+.dark * {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }

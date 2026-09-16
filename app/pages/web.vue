@@ -7,9 +7,6 @@ const imagesMSOnlinePanelV2 = ['屏幕截图 2025-10-09 205918.png', '屏幕截�
 </script>
 
 <template>
-  <header class="sticky top-3 z-10">
-    <app-header />
-  </header>
   <div class="flex flex-col items-center gap-y-4">
     <fan-h1>网页开发</fan-h1>
 

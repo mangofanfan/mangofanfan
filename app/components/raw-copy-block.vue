@@ -31,11 +31,13 @@ onUnmounted(() => {
     </prose-p>
     <prose-code>/::translate-paragraph\r?\n#o\r?\n(.*?)\n#t\r?\n(.*?)\r?\n::/gms</prose-code>
   </message>
+
   <div class="relative flex flex-col gap-y-2">
     <div
       :class="[
         'sticky top-18 flex flex-row items-center w-full',
         'p-1 border rounded-md border-blue-500 bg-blue-50',
+        'dark:bg-blue-900',
       ]"
     >
       <prose-p>Ciallo～(∠·ω< )⌒★</prose-p>
@@ -50,8 +52,10 @@ onUnmounted(() => {
     </div>
     <pre
       :class="[
-        'p-2 border rounded-md font-maple-mono break-all whitespace-pre-wrap',
+        'p-2 border rounded-md font-maple-mono break-all whitespace-pre-wrap text-xs',
         'bg-gray-200 border-gray-600',
+        'dark:bg-gray-700 dark:border-gray-300',
+        'overflow-y-auto max-h-120',
       ]"
       id="source"
       >{{ text }}</pre>

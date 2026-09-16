@@ -91,6 +91,11 @@ div.blank {
   .position {
     position: absolute;
     width: 12rem;
+    transition: transform 0.2s ease;
+  }
+
+  .position:hover {
+    transform: translateY(-8px);
   }
 
   #position-1 {

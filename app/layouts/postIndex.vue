@@ -26,6 +26,9 @@ watch(isAutoMode, (newVal) => {
         <NuxtLink class="block" to="/mcfpp">
           <card-button class="bg-blur">MCFPP</card-button>
         </NuxtLink>
+        <NuxtLink class="block" to="/nuxt-log">
+          <card-button class="bg-blur">新站开发记录</card-button>
+        </NuxtLink>
       </app-secondbar>
       <div class="main-col">
         <slot />
