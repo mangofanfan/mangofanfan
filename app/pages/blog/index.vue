@@ -35,8 +35,8 @@ function get3(xList: any[]) {
       }"
       :to="post.path"
     >
-      <p class="font-medium text-lg">{{ post.title }}</p>
-      <p class="line-clamp-1">{{ post.date }} | {{ post.description }}</p>
+      <prose-p class="font-medium text-lg">{{ post.title }}</prose-p>
+      <prose-p class="line-clamp-1">{{ post.date }} | {{ post.description }}</prose-p>
       <div class="overflow-x-auto max-w-full flex flex-row gap-x-2">
         <badge class="text-nowrap" level="info" v-for="tag of get3(post.tags)">{{ tag }}</badge>
       </div>

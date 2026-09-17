@@ -19,8 +19,8 @@ useSeoMeta({
       class="article-card px-4 py-3 border rounded-lg border-fan-600 flex flex-col gap-y-1"
       :to="post.path"
     >
-      <p class="font-medium text-lg">{{ post.title }}</p>
-      <p class="line-clamp-1">{{ post.date }} | {{ post.description }}</p>
+      <prose-p class="font-medium text-lg">{{ post.title }}</prose-p>
+      <prose-p class="line-clamp-1">{{ post.date }} | {{ post.description }}</prose-p>
     </NuxtLink>
   </article>
 </template>

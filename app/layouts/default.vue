@@ -50,6 +50,7 @@
         <fan-h4>外部链接</fan-h4>
         <social-links />
       </card>
+      <app-bottombar />
     </div>
   </div>
 </template>

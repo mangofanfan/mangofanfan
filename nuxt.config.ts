@@ -57,12 +57,13 @@ export default defineNuxtConfig({
   },
 
   modules: [
-   '@nuxt/image',
-   '@nuxt/icon',
-   '@nuxt/eslint',
-   '@nuxt/content',
-   'nitro-cloudflare-dev',
-   '@nuxtjs/color-mode'
+    '@nuxt/image',
+    '@nuxt/icon',
+    '@nuxt/eslint',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/sitemap',
+    '@nuxt/content',
+    'nitro-cloudflare-dev',
   ],
 
   app: {
@@ -72,16 +73,21 @@ export default defineNuxtConfig({
       meta: [
         { name: 'color-scheme', content: 'light dark' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '芒果帆帆的全新个人网站喵' },
+        { name: 'description', content: '芒果帆帆的全新个人网站喵！' },
         { name: 'keywords', content: '芒果帆帆, MangoFanFan, Nuxt' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
 
+  site: {
+    name: '芒果.js',
+    url: 'https://mango.js.cn/',
+  },
+
   icon: {
     serverBundle: { collections: ['fa6-solid', 'codicon'] },
-    // 全站 SSG 的关键：禁止运行时回退到 api.iconify.design
+    // 禁止运行时回退到 api.iconify.design
     fallbackToApi: false,
     // 可选：把扫描到的用到的图标打进客户端包，
     // 覆盖"仅在客户端交互时才出现的图标"这种 SSG 盲区

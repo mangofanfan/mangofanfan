@@ -18,9 +18,9 @@ watch(
   <card class="bg-blur w-full h-14 flex flex-row gap-x-4 items-center" extraClass="px-6 py-2">
     <div id="home-teleports" />
     <span class="font-bold text-xl">{{ title }}</span>
-    <NuxtLink style="margin-left: auto" to="/">主页</NuxtLink>
-    <NuxtLink to="/blog">博客</NuxtLink>
-    <NuxtLink to="/toy">玩具</NuxtLink>
+    <prose-a style="margin-left: auto" href="/">主页</prose-a>
+    <prose-a href="/blog">博客</prose-a>
+    <prose-a href="/toy">玩具</prose-a>
     <div id="header-teleports" />
   </card>
 </template>

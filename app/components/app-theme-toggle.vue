@@ -6,10 +6,10 @@ const colorMode = useColorMode()
 <template>
   <div
     :class="[
-      'app-theme-toggle size-12 rounded-lg flex flex-row items-center justify-center cursor-pointer',
-      'bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600',
-      'dark:bg-gray-800 dark:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-400',
-      'border border-transparent hover:border-fan-300',
+      'app-theme-toggle size-12 rounded-lg flex flex-row items-center justify-center cursor-pointer border ',
+      'bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 border-black/40 hover:border-fan-300',
+      'dark:bg-gray-800 dark:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-400 dark:border-white/40',
+      '',
     ]"
     @click="show = !show"
   >

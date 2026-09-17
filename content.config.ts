@@ -1,4 +1,5 @@
 import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { defineSitemapSchema } from '@nuxtjs/sitemap/content'
 import { z } from 'zod'
 
 export default defineContentConfig({
@@ -11,6 +12,7 @@ export default defineContentConfig({
         tags: z.array(z.string()),
         image: z.string(),
         date: z.date(),
+        sitemap: defineSitemapSchema(),
       }),
     }),
     nuxtLog: defineCollection({
@@ -18,6 +20,7 @@ export default defineContentConfig({
       source: 'nuxt-log/*.md',
       schema: z.object({
         date: z.date(),
+        sitemap: defineSitemapSchema(),
       }),
     }),
     mcfpp: defineCollection({
@@ -25,6 +28,7 @@ export default defineContentConfig({
       source: 'mcfpp/*.md',
       schema: z.object({
         index: z.number(),
+        sitemap: defineSitemapSchema(),
       }),
     }),
     mcfppVscodeExtension: defineCollection({
@@ -32,6 +36,7 @@ export default defineContentConfig({
       source: 'mcfpp/vscode-extension/*.md',
       schema: z.object({
         index: z.number(),
+        sitemap: defineSitemapSchema(),
       }),
     }),
   },

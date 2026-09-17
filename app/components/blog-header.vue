@@ -49,4 +49,12 @@ div.blog-header__inner-card {
   backdrop-filter: blur(8px);
   padding: 1em 1.4em;
 }
+
+.dark div.blog-header__container {
+  background-color: #02121f;
+}
+
+.dark div.blog-header__inner-card {
+  background-color: rgb(24 28 28 / 0.6);
+}
 </style>

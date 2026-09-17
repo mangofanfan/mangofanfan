@@ -17,7 +17,7 @@ const self = computed(() => inner.value && route.path === href)
 </script>
 
 <template>
-  <span v-if="self" class="font-misans text-black font-medium">
+  <span v-if="self" class="font-misans text-black dark:text-white font-medium">
     <slot />
   </span>
   <NuxtLink

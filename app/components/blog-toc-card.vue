@@ -75,7 +75,6 @@ a {
   font-family: var(--font-misans), sans-serif;
   border-left: 3px solid transparent;
   padding-left: 0.8rem;
-  color: var(--color-black);
 }
 
 .depth-2 {
