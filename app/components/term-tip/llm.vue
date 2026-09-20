@@ -6,15 +6,14 @@ const { name } = defineProps<{
 }>()
 
 const term = computed(() => {
-  return name ? name : 'Axios'
+  return name ? name : 'LLM'
 })
 </script>
 
 <template>
   <term-tip :term>
     <template #content>
-      <p class="font-misans">一个网络请求库，比原生 <prose-code>fetch</prose-code> 更简洁强大。</p>
-      <p class="font-misans">支持在项目层面设置请求头、身份验证、错误处理、代理使用等高级需求。</p>
+      <p class="font-misans">大语言模型（Large Language Model），即大规模的语言模型。</p>
     </template>
   </term-tip>
 </template>

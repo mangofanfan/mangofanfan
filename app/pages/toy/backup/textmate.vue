@@ -1,30 +1,5 @@
 <script setup lang="ts">
 import type { TocLink } from '@nuxt/content'
-import TranslateToc from '~/components/translate-toc.vue'
-import { getOriginMarkdown, getTranslationMarkdown } from '~/assets/script/markdownRe.ts'
-
-definePageMeta({
-  layout: 'toy',
-})
-
-useSeoMeta({
-  title: '编写 TextMate 语法：一些需要学习的课程（翻译）',
-  description: `Dr.Matt Neuburg 的技术博客 Writing a TextMate Grammar: Some Lessons Learned 的非官方中文翻译。
-    尽管 TextMate 已经存在了很长时间（按计算机的年份来算），而且已经出现了许多语言包，但令人惊讶的是，编写语言语法的过程仍然缺乏文档记录。`,
-})
-
-const { data: textmate_ast } = useAsyncData('backup-textmate', () =>
-  $fetch('/api/markdown/backup/textmate')
-)
-
-const { data: textmate_raw } = useAsyncData('backup-textmate-raw', () =>
-  $fetch('/api/markdown/raw/backup/textmate')
-)
-
-const activeMode = ref<'o' | 'ot' | 't'>('ot')
-
-const showOrigin = computed(() => (activeMode.value !== 't' ? 'block' : 'none'))
-const showTranslation = computed(() => (activeMode.value !== 'o' ? 'block' : 'none'))
 
 const tocOrigin: TocLink[] = [
   {
@@ -105,84 +80,34 @@ const tocOrigin: TocLink[] = [
   },
 ]
 
-const trWarning = ref(false)
-const copyRawMarkdown = ref('你需要复制本文的 Markdown 格式吗？')
+definePageMeta({
+  layout: {
+    name: 'toy-backup',
+    props: {
+      name: 'textmate',
+      tocLinks: tocOrigin,
+      title: 'Writing a TextMate Grammar: Some Lessons Learned',
+      titleId: 'writing-a-textmate-grammar-some-lessons-learned',
+    },
+  },
+})
+
+useSeoMeta({
+  title: '编写 TextMate 语法：一些需要学习的课程（翻译）',
+  description: `Dr.Matt Neuburg 的技术博客 Writing a TextMate Grammar: Some Lessons Learned 的非官方中文翻译。
+    尽管 TextMate 已经存在了很长时间（按计算机的年份来算），而且已经出现了许多语言包，但令人惊讶的是，编写语言语法的过程仍然缺乏文档记录。`,
+})
 </script>
 
 <template>
-  <div class="textmate-backup w-full flex flex-col gap-y-4">
-    <card v-if="textmate_ast" class="w-full relative">
-      <ContentRenderer :value="textmate_ast" :data="textmate_ast.data" />
-
-      <div class="sticky bottom-4 w-full flex flex-row gap-x-2 items-center justify-center">
-        <translate-switch v-model:active-mode="activeMode" />
-        <translate-toc
-          title="Writing a TextMate Grammar: Some Lessons Learned"
-          titleId="writing-a-textmate-grammar-some-lessons-learned"
-          :links="tocOrigin"
-          placement="top"
-        />
-      </div>
-    </card>
-    <card v-if="textmate_raw" class="w-full flex flex-col gap-y-1">
-      <prose-p>如果对你有帮助的话——你可以：</prose-p>
-      <div class="flex flex-row gap-x-3">
-        <fan-button
-          level="fan"
-          @click="
-            () => {
-              if (textmate_raw) copyRawMarkdown = getOriginMarkdown(textmate_raw)
-              trWarning = false
-            }
-          "
-        >
-          英文原文.markdown
-        </fan-button>
-        <fan-button
-          level="info"
-          @click="
-            () => {
-              if (textmate_raw) copyRawMarkdown = getTranslationMarkdown(textmate_raw)
-              trWarning = false
-            }
-          "
-        >
-          中文翻译.markdown
-        </fan-button>
-        <fan-button
-          level="warning"
-          @click="
-            () => {
-              if (textmate_raw) copyRawMarkdown = textmate_raw
-              trWarning = true
-            }
-          "
-        >
-          原文+翻译.markdown
-        </fan-button>
-      </div>
-      <prose-p>
-        请注意本翻译件并非完全的 AI 作品，因此
-        <term-tip-mangofan />
-        需要你在继续传播翻译内容时署名原作者
-        <prose-code>Matt Neuburg</prose-code>
-        和译者
-        <prose-code>芒果帆帆w</prose-code> 。感谢您的理解。
-      </prose-p>
-      <prose-hr />
-      <raw-copy-block :text="copyRawMarkdown" :translation-warning="trWarning" />
-    </card>
-  </div>
+  <prose-p>
+    请注意本翻译件并非完全的 AI 作品，因此
+    <term-tip-mangofan />
+    需要你在继续传播翻译内容时署名原作者
+    <prose-code>Matt Neuburg</prose-code>
+    和译者
+    <prose-code>芒果帆帆w</prose-code> 。感谢您的理解。
+  </prose-p>
 </template>
 
 <style scoped></style>
-
-<style>
-.tp-origin {
-  display: v-bind(showOrigin);
-}
-
-.tp-translation {
-  display: v-bind(showTranslation);
-}
-</style>

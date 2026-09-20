@@ -48,6 +48,9 @@ useSeoMeta({
         <nuxt-link to="/toy/backup/textmate">
           <fan-button level="info">Some TextMate Lessons</fan-button>
         </nuxt-link>
+        <nuxt-link to="/toy/backup/llmstxt">
+          <fan-button level="info">/llms.txt</fan-button>
+        </nuxt-link>
       </div>
     </card>
 
