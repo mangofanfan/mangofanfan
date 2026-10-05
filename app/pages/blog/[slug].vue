@@ -21,6 +21,8 @@ if (!post.value) {
 
 const title = post.value.title
 const description = post.value.description
+// @ts-expect-error 无能为力的类型警告但似乎不影响？
+useHead(post.value.head)
 useSeoMeta({
   title,
   description,
@@ -28,6 +30,7 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: 'https://mango.js.cn' + post.value.path,
   ogType: 'article',
+  ogImageUrl: post.value.image,
 })
 </script>
 

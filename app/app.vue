@@ -11,6 +11,8 @@ provide('remove-additional-navigation-menu-items', removeANMI)
 
 <template>
   <UApp :locale="zh_cn">
+    <NuxtLoadingIndicator />
+
     <AppSiteHeader :additional-items />
 
     <UMain>
@@ -20,21 +22,6 @@ provide('remove-additional-navigation-menu-items', removeANMI)
         </NuxtLayout>
       </UContainer>
     </UMain>
-
-    <USeparator>
-      <template #default>
-        <div class="flex flex-row px-2 border border-default rounded-xl divide-x divide-default">
-          <a href="/sitemap.xml" target="_blank" class="px-2 text-muted text-sm">站点地图</a>
-
-          <a
-            href="https://icp.gov.moe/?keyword=20262632"
-            target="_blank"
-            class="px-2 text-muted text-sm"
-            >萌ICP备20262632号</a
-          >
-        </div>
-      </template>
-    </USeparator>
 
     <AppSiteFooter />
   </UApp>

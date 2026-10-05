@@ -19,10 +19,12 @@
     "@nuxt/image": "^2.1.0",
     "@nuxt/ui": "^4.11.1",
     "@nuxtjs/mdc": "^0.23.1",
+    "@nuxtjs/robots": "^6.2.4",
     "@nuxtjs/sitemap": "^8.5.1",
     "@types/node": "^26.6.3",
     "better-sqlite3": "^13.0.3",
     "nuxt": "^4.5.2",
+    "nuxt-schema-org": "^6.4.3",
     "nuxt-shiki": "^0.3.2",
     "tailwindcss": "^4.3.3",
     "zod": "^4.6.5"

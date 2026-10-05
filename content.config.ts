@@ -1,6 +1,7 @@
 import { defineCollection, defineContentConfig } from '@nuxt/content'
 import { z } from 'zod'
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content'
+import { defineSchemaOrgSchema } from 'nuxt-schema-org/content'
 
 export default defineContentConfig({
   collections: {
@@ -8,6 +9,13 @@ export default defineContentConfig({
       type: 'page',
       source: 'blog/*.md',
       schema: z.object({
+        schemaOrg: defineSchemaOrgSchema(),
+        head: z
+          .object({
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            script: z.array(z.record(z.string(), z.any())).optional(),
+          })
+          .optional(),
         sitemap: defineSitemapSchema(),
         date: z.string(),
         image: z.string(),
@@ -19,6 +27,13 @@ export default defineContentConfig({
       type: 'page',
       source: 'docs/mcfpp/*.md',
       schema: z.object({
+        schemaOrg: defineSchemaOrgSchema(),
+        head: z
+          .object({
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            script: z.array(z.record(z.string(), z.any())).optional(),
+          })
+          .optional(),
         sitemap: defineSitemapSchema(),
         index: z.number(),
         published: z.boolean().default(true),
@@ -28,6 +43,13 @@ export default defineContentConfig({
       type: 'page',
       source: 'docs/mcfpp-vscode-extension/*.md',
       schema: z.object({
+        schemaOrg: defineSchemaOrgSchema(),
+        head: z
+          .object({
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            script: z.array(z.record(z.string(), z.any())).optional(),
+          })
+          .optional(),
         sitemap: defineSitemapSchema(),
         index: z.number(),
         published: z.boolean().default(true),

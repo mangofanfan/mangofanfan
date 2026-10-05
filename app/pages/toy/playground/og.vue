@@ -24,18 +24,18 @@ useSeoMeta({
 </script>
 
 <template>
-  <UPage>
+  <UPage v-if="post" class="toy-playground-og-page">
     <template #left>
       <UPageAside class="mt-6">
-        <UContentToc :links="post!.body.toc!.links" title="开放图谱协议" />
+        <UContentToc :links="post.body.toc!.links" title="开放图谱协议" />
       </UPageAside>
     </template>
 
-    <UPageHeader :title="post!.title" :description="post!.description" />
+    <UPageHeader :title="post.title" :description="post.description" />
 
     <PlaygroundOgDector class="mt-6" />
 
-    <ContentRenderer :value="post!" />
+    <ContentRenderer :value="post" />
   </UPage>
 </template>
 

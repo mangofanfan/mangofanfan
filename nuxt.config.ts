@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import { definePerson } from 'nuxt-schema-org/schema'
 
 // Shiki 使用语法文件里的 `name` 作为语言 id，而 @nuxtjs/mdc 与 nuxt-shiki
 // 都会把请求的语言名转成小写再查找，所以这里把 id 归一化成小写的 `mcfpp`。
@@ -25,6 +26,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-schema-org',
     '@nuxt/content',
     '@nuxt/image',
     'nuxt-shiki',
@@ -71,6 +74,26 @@ export default defineNuxtConfig({
   site: {
     name: '芒果.js',
     url: 'https://mango.js.cn/',
+    description: '芒果帆帆的全新个人网站喵！',
+  },
+
+  robots: {
+    allow: '/',
+    sitemap: 'https://mango.js.cn/sitemap.xml',
+  },
+
+  schemaOrg: {
+    identity: definePerson({
+      name: '芒果帆帆w',
+      image: '/images/acatar.png',
+      description: '在校学生、独立开发者、文字工作、创意工作',
+      url: 'https://mango.js.cn/',
+      sameAs: [
+        'https://space.bilibili.com/354535460',
+        'https://github.com/mangofanfan',
+        'https://www.zhihu.com/people/mang-guo-fan-fan',
+      ],
+    }),
   },
 
   content: {
