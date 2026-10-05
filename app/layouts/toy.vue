@@ -61,7 +61,9 @@ const items = [
 const setANMI = inject('set-additional-navigation-menu-items') as (
   val: NavigationMenuItem[],
 ) => void
+const removeANMI = inject('remove-additional-navigation-menu-items') as () => void
 setANMI(items)
+onUnmounted(() => removeANMI())
 </script>
 
 <template>

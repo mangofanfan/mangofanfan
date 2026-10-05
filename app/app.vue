@@ -4,7 +4,9 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 
 const additionalItems = ref<NavigationMenuItem[] | null>(null)
 const setANMI = (newVal: NavigationMenuItem[]) => (additionalItems.value = newVal)
+const removeANMI = () => (additionalItems.value = [])
 provide('set-additional-navigation-menu-items', setANMI)
+provide('remove-additional-navigation-menu-items', removeANMI)
 </script>
 
 <template>

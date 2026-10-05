@@ -121,4 +121,27 @@ export default defineNuxtConfig({
       defaultColor: false,
     },
   },
+
+  // ？！大肥鱼和 GLM 都强强！？
+  nitro: {
+    // 仅在构建部署（nuxt build / generate，NODE_ENV=production）时启用 Cloudflare preset。
+    // 不要在 dev 中启用：@nuxt/content 会依据 nitro.preset 选择对应 preset，
+    // dev 下使用 cloudflare preset 会导致其客户端数据库加载依赖的
+    // /__nuxt_content/<collection>/sql_dump.txt 接口返回空内容，
+    // 从而出现“热更新后内容被清空 / 客户端导航后 Markdown 为空”的问题。
+    // （dev 的 Cloudflare 绑定由 nitro-cloudflare-dev 提供，与此无关。）
+    preset: process.env.NODE_ENV === 'production' ? 'cloudflare_module' : undefined,
+
+    // 混合模式核心：全站预渲染
+    prerender: {
+      crawlLinks: true, // 从入口路由沿链接爬取所有页面（含所有博客文章）
+      routes: ['/'], // 入口：首页
+      ignore: ['/api/**'], // 部分 API 不预渲染，留给 Worker 运行时执行
+    },
+
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
+  },
 })
