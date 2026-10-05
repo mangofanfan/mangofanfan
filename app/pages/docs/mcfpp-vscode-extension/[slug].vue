@@ -25,7 +25,7 @@ if (!page.value) {
 const title = page.value.title
 const description = page.value.description
 // @ts-expect-error 无能为力的类型警告但似乎不影响？
-useHead(post.value.head)
+useHead(page.value.head)
 useSeoMeta({
   title,
   description,
