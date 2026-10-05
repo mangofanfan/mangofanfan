@@ -1,0 +1,39 @@
+{
+  "name": "nya-home-v2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/ant-design": "^1.2.9",
+    "@iconify-json/lucide": "^1.2.134",
+    "@iconify-json/simple-icons": "^1.2.96",
+    "@iconify-json/vscode-icons": "^1.2.82",
+    "@nuxt/content": "^3.16.1",
+    "@nuxt/image": "^2.1.0",
+    "@nuxt/ui": "^4.11.1",
+    "@nuxtjs/mdc": "^0.23.1",
+    "@nuxtjs/sitemap": "^8.5.1",
+    "@types/node": "^26.6.3",
+    "better-sqlite3": "^13.0.3",
+    "nuxt": "^4.5.2",
+    "nuxt-shiki": "^0.3.2",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-better-tailwindcss": "^4.7.0",
+    "prettier": "^3.9.9",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.11"
+  }
+}

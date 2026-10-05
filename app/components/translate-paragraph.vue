@@ -1,0 +1,14 @@
+<script setup lang="ts"></script>
+
+<template>
+  <div class="translate-paragraph flex flex-row divide-x divide-default">
+    <div class="tp-origin flex-1 p-1 min-w-0">
+      <slot name="o" />
+    </div>
+    <div class="tp-translation flex-1 p-1 min-w-0">
+      <slot name="t" />
+    </div>
+  </div>
+</template>
+
+<style scoped></style>

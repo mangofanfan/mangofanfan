@@ -1,0 +1,29 @@
+// @ts-check
+import withNuxt from "./.nuxt/eslint.config.mjs";
+import betterTailwindcss from "eslint-plugin-better-tailwindcss";
+import { getDefaultAttributes } from "eslint-plugin-better-tailwindcss/api/defaults";
+import prettierConfig from "eslint-config-prettier";
+
+export default withNuxt(
+  betterTailwindcss.configs["correctness-error"],
+  {
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "app/assets/css/main.css",
+        attributes: [
+          ...getDefaultAttributes(),
+          ["^v-bind:ui$", [{ match: "objectValues" }]],
+        ],
+      },
+    },
+  },
+  {
+    files: ["**/*.vue"],
+    rules: {
+      "better-tailwindcss/no-unknown-classes": "off",
+      "vue/multi-word-component-names": "off",
+      "@stylistic/comma-dangle": ["error", "always-multiline"],
+    },
+  },
+  prettierConfig,
+);

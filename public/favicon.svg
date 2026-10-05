@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath2498)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(10,0,0,10,0,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" width="100" height="100"><path d="M49 32c-16-2-29 10-29 28s12 33 27 32c14-1 24-15 23-31C69 45 61 34 49 32Z"></path><path d="M50 31c0-6 2-10 6-14"></path><path d="M56 17C50 10 40 9 34 14c4 7 15 9 22 3Z"></path><path d="M56 17c5-8 16-10 23-6-2 8-14 12-23 6Z"></path></svg></g></g><defs><clipPath id="SvgjsClipPath2498"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath2499)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(10,0,0,10,0,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" width="100" height="100"><path d="M49 32c-16-2-29 10-29 28s12 33 27 32c14-1 24-15 23-31C69 45 61 34 49 32Z"></path><path d="M50 31c0-6 2-10 6-14"></path><path d="M56 17C50 10 40 9 34 14c4 7 15 9 22 3Z"></path><path d="M56 17c5-8 16-10 23-6-2 8-14 12-23 6Z"></path></svg></g></g><defs><clipPath id="SvgjsClipPath2499"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs></svg></g></svg>

@@ -1,0 +1,124 @@
+import { readFileSync } from 'node:fs'
+
+// Shiki 使用语法文件里的 `name` 作为语言 id，而 @nuxtjs/mdc 与 nuxt-shiki
+// 都会把请求的语言名转成小写再查找，所以这里把 id 归一化成小写的 `mcfpp`。
+const mcfpp = {
+  ...JSON.parse(readFileSync('./public/langs/mcfpp.tmLanguage.json', 'utf-8')),
+  name: 'mcfpp',
+}
+const mcfunction = {
+  ...JSON.parse(readFileSync('./public/langs/mcfunction.tmLanguage.json', 'utf-8')),
+  name: 'mcfunction',
+}
+
+// 与 Nuxt Content / nuxt-shiki 共用的一组明暗主题
+// （`default` 是 Nuxt Content 要求的必需项，取浅色主题即可）
+const themes = {
+  default: 'material-theme-lighter',
+  light: 'material-theme-lighter',
+  dark: 'material-theme-darker',
+} as const
+
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@nuxtjs/sitemap',
+    '@nuxt/content',
+    '@nuxt/image',
+    'nuxt-shiki',
+  ],
+
+  devtools: {
+    enabled: true,
+  },
+
+  app: {
+    head: {
+      title: '芒果客栈 [mango.js]',
+      titleTemplate: '%s - 芒果客栈 [mango.js]',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: '芒果帆帆的全新个人网站喵！' },
+        { name: 'keywords', content: '芒果帆帆, MangoFanFan, Nuxt' },
+        { property: 'og:side_name', content: '芒果客栈[mango.js]' },
+        { property: 'og:locale', content: 'zh_CN' },
+        { name: 'apple-mobile-web-app-title', content: '芒果客栈' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'shortcut icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+      ],
+      htmlAttrs: { lang: 'zh-CN' },
+    },
+  },
+
+  css: ['~/assets/css/main.css'],
+
+  icon: {
+    customCollections: [
+      {
+        prefix: 'fan',
+        dir: './app/assets/icons',
+      },
+    ],
+  },
+
+  site: {
+    name: '芒果.js',
+    url: 'https://mango.js.cn/',
+  },
+
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          langs: [mcfpp, mcfunction, 'yaml', 'json', 'bash'],
+          theme: themes,
+        },
+      },
+    },
+  },
+
+  routeRules: {
+    '/': { prerender: true },
+  },
+
+  devServer: {
+    port: 4000,
+  },
+
+  compatibilityDate: '2026-06-30',
+
+  eslint: {
+    config: {
+      stylistic: false, // 默认就没开，写出来更明确
+      formatters: false, // 也关掉；这个特性用 @stylistic 的 formatter 处理 CSS/MD/JSON，与 Prettier 职责重叠
+    },
+  },
+
+  shiki: {
+    // bundledLangs 只接受 shiki 内置语言名（字符串），自定义语法请通过
+    // content.build.markdown.highlight.langs 注册
+    bundledLangs: [
+      'javascript',
+      'typescript',
+      'json',
+      'vue',
+      'html',
+      'css',
+      'bash',
+      'yaml',
+      'markdown',
+    ],
+    defaultTheme: themes,
+    // 输出 --shiki-light / --shiki-dark CSS 变量，由 CSS 决定实际颜色
+    highlightOptions: {
+      defaultColor: false,
+    },
+  },
+})
