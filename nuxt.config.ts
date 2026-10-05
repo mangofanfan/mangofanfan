@@ -92,7 +92,7 @@ export default defineNuxtConfig({
     port: 4000,
   },
 
-  compatibilityDate: '2026-06-30',
+  compatibilityDate: '2026-09-03',
 
   eslint: {
     config: {
