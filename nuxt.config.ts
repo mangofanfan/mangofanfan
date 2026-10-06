@@ -161,6 +161,23 @@ export default defineNuxtConfig({
     },
   },
 
+  vite: {
+    resolve: {
+      alias: {
+        // Cloudflare preset 会给 nitro 启用 wasm 支持，`nuxt:nitro:ssr-conditions`
+        // 插件随之把 `unwasm` 解析条件同步进 SSR Vite 构建。这会让 nuxt-shiki
+        // runtime 里的 `import("shiki/core")` 解析到 core-unwasm.mjs，后者内部的
+        // `import('shiki/wasm')` 在 unwasm 条件下解析到裸 onig.wasm 二进制；
+        // Rolldown（Vite 8）把 wasm 当模块解析其 Emscripten "env" 导入，
+        // 产生无法 resolve 的裸 `import from "env"`，导致 build 失败。
+        // nuxt-shiki 自带 JS 正则引擎，wasm loader 根本不会被调用，
+        // 这里强制走默认入口（与 dev / 非 Cloudflare 构建行为完全一致：
+        // shiki/dist/core.mjs 本身就是 `export * from '@shikijs/core'`）。
+        'shiki/core': '@shikijs/core',
+      },
+    },
+  },
+
   // ？！大肥鱼和 GLM 都强强！？
   nitro: {
     // 仅在构建部署（nuxt build / generate，NODE_ENV=production）时启用 Cloudflare preset。
