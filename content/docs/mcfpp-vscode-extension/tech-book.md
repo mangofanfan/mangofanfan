@@ -2,6 +2,7 @@
 title: 扩展技术手册
 description: MCFPP VSCode 扩展的技术手册
 index: 100
+publishedTime: 2026-09-10
 ---
 
 本页介绍 :term-tip-mcfpp :term-tip-vscode 扩展的文件结构。

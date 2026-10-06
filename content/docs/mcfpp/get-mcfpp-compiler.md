@@ -2,6 +2,7 @@
 title: 获得 MCFPP 编译器
 description: 需要获得编译器，然后才能开始使用 MCFPP 进行创作。
 index: 5
+publishedTime: 2026-09-10
 ---
 
 :term-tip-mcfpp 是一门新的高级编程语言，其源代码通过编译后得到数据包产物。因此，你需要：

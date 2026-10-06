@@ -2,6 +2,7 @@
 title: MCFPP 简明介绍
 description: 一门为 Minecraft Java 数据包开发所设计的语言
 index: 1
+publishedTime: 2026-09-10
 ---
 
 :term-tip-mcfpp 是一门为 Minecraft Java 版数据包开发所设计的语言。

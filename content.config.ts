@@ -17,7 +17,7 @@ export default defineContentConfig({
           })
           .optional(),
         sitemap: defineSitemapSchema(),
-        date: z.string(),
+        date: z.date(),
         image: z.string(),
         tags: z.array(z.string()),
         published: z.boolean().default(true),
@@ -37,6 +37,8 @@ export default defineContentConfig({
         sitemap: defineSitemapSchema(),
         index: z.number(),
         published: z.boolean().default(true),
+        publishedDate: z.date(),
+        modifiedDate: z.date(),
       }),
     }),
     docsMcfppVscodeExtension: defineCollection({
@@ -53,6 +55,8 @@ export default defineContentConfig({
         sitemap: defineSitemapSchema(),
         index: z.number(),
         published: z.boolean().default(true),
+        publishedDate: z.date(),
+        modifiedDate: z.date(),
       }),
     }),
     toys: defineCollection({

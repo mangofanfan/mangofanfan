@@ -2,6 +2,7 @@
 title: 创建简单模板
 description: 创建简单 MCFPP 数据包模板
 index: 2
+publishedTime: 2026-09-10
 ---
 
 本页文档将引导您创建 **简单 :term-tip-mcfpp 数据包模板**，并介绍简单模板的各部分内容。

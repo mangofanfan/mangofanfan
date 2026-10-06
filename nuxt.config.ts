@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/image',
     'nuxt-shiki',
+    'nuxt-ai-ready',
   ],
 
   devtools: {
@@ -79,7 +80,16 @@ export default defineNuxtConfig({
 
   robots: {
     allow: '/',
+    disallow: ['/_fonts', '/__nuxt_content'],
     sitemap: 'https://mango.js.cn/sitemap.xml',
+  },
+
+  aiReady: {
+    contentSignal: {
+      aiTrain: false,
+      search: true,
+      aiInput: true,
+    },
   },
 
   schemaOrg: {

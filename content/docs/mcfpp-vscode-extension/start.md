@@ -2,6 +2,7 @@
 title: MCFPP VSCode Extension
 description: MCFPP VSCode 扩展使用入门
 index: 1
+publishedTime: 2026-09-10
 ---
 
 ::message{level=warning}
