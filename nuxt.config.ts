@@ -155,6 +155,12 @@ export default defineNuxtConfig({
     },
   },
 
+  mdc: {
+    highlight: {
+      shikiEngine: 'javascript',
+    },
+  },
+
   // ？！大肥鱼和 GLM 都强强！？
   nitro: {
     // 仅在构建部署（nuxt build / generate，NODE_ENV=production）时启用 Cloudflare preset。
