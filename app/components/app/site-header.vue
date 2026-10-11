@@ -82,8 +82,9 @@ const items = ref<NavigationMenuItem[]>([
     title="芒果客栈"
     to="/"
     mode="slideover"
+    class="app-site-header"
     :ui="{
-      root: () => 'h-(--ui-header-height) sticky top-0 z-50',
+      root: () => 'app-site-header h-(--ui-header-height) sticky top-0 z-50',
       container: [
         'w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full',
         'bg-default/75 backdrop-blur-sm relative z-5',
@@ -135,4 +136,8 @@ const items = ref<NavigationMenuItem[]>([
   </UHeader>
 </template>
 
-<style scoped></style>
+<style>
+.app-site-header {
+  font-family: var(--font-sans), sans-serif;
+}
+</style>

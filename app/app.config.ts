@@ -2,7 +2,12 @@ export default defineAppConfig({
   ui: {
     colors: {
       primary: 'green',
-      neutral: 'slate'
-    }
-  }
+      neutral: 'slate',
+    },
+    pageAside: {
+      slots: {
+        root: 'font-sans',
+      },
+    },
+  },
 })

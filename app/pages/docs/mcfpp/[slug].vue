@@ -10,7 +10,7 @@ const { data: page } = await useAsyncData(route.path, () => {
 })
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings('docsMcfpp', route.path)
+  return queryCollectionItemSurroundings('docsMcfpp', route.path, { fields: ['description'] })
     .where('published', '=', true)
     .order('index', 'ASC')
 })

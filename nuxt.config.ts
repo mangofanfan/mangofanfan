@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-shiki',
     'nuxt-ai-ready',
+    '@nuxt/fonts',
   ],
 
   devtools: {
@@ -62,6 +63,10 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  fonts: {
+    families: [{ name: 'note sans sc', provider: 'fontsource' }],
+  },
 
   icon: {
     customCollections: [

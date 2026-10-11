@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="app-side-footer">
+  <div class="app-site-footer">
     <USeparator>
       <template #default>
         <div class="flex flex-row px-2 border border-default rounded-xl divide-x divide-default">
@@ -29,4 +29,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style>
+.app-site-footer {
+  font-family: var(--font-sans), sans-serif;
+}
+</style>

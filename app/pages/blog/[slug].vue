@@ -10,7 +10,7 @@ const { data: post } = await useAsyncData(`blog-${route.path}`, async () => {
 })
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings('blog', route.path)
+  return queryCollectionItemSurroundings('blog', route.path, { fields: ['description'] })
     .where('published', '=', true)
     .order('date', 'DESC')
 })
