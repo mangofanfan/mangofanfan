@@ -1,4 +1,5 @@
 import * as z from 'zod'
+import { format } from 'prettier'
 
 const scheme = z.object({ url: z.url() })
 
@@ -27,6 +28,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     target: url,
-    raw,
+    raw: await format(raw, { parser: 'html' }),
   }
 })

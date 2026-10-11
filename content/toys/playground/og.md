@@ -17,6 +17,18 @@ description: 检查一个链接的理想状态最佳显示效果！
 也因此，本分析仪抓取页面并生成的分享卡片只是不正经的预览效果，仅供参考。
 ::
 
+### 关于分析仪
+
+本页面的顶部有一个芒果手搓的开放图谱协议分析仪。只需要输入目标页面的 URL，然后点击按钮即可抓取页面并进行分析，生成分享卡片示例。
+
+[一篇芒果日志被用于介绍这个分析仪的更多信息。](/blog/20261011-og)
+
+## 元数据规范
+
+开放图谱协议规定的元数据在 HTML 页面的 `<head>` 标签中，以 `<meta>` 标签的方式提供。
+
+其中，以 `<meta>` 的 `name` 或 `property` 作为元数据名称，以 `content` 作为元数据内容。
+
 ## 基本要素
 
 按照协议规范，以下四个基础元数据是应该提供的：
@@ -47,13 +59,13 @@ description: 检查一个链接的理想状态最佳显示效果！
 
 `website` 也是缺省时的默认值。
 
-下面是一个网站首页的示例。
+下面是一个[网站首页](https://developer.mozilla.org/zh-CN/)的示例。
 
 ::PlaygroundOgContainer{url="https://developer.mozilla.org/zh-CN/ "}
 :PlaygroundOGCard{
 title="MDN Web Docs"
 description="MDN Web Docs 网站提供有关开放 Web 技术的信息，包括 HTML、CSS以及适用于网站和渐进式 Web 应用的 API。"
-image="https://developer.mozilla.org/mdn-social-image.46ac2375.png "
+image="https://developer.mozilla.org/mdn-social-image.46ac2375.png"
 siteName="MDN Web Docs"
 type="website"
 }
@@ -248,5 +260,3 @@ bookTag:
 ---
 ::
 ::
-
-## 实际应用

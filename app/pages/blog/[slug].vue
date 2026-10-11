@@ -38,7 +38,11 @@ useSeoMeta({
 
 <template>
   <div class="blog-page">
-    <UPageHeader :title="post!.title" :description="post!.description" />
+    <UPageHeader :title="post!.title" :description="post!.description">
+      <template #default>
+        <NuxtImg v-if="post?.image" :src="post.image" class="mt-6 rounded-lg" />
+      </template>
+    </UPageHeader>
 
     <UPageBody>
       <ContentRenderer :value="post!" />

@@ -1,53 +1,11 @@
 <script setup lang="ts">
-interface Props {
-  title: string
-  description?: string
-  type?:
-    | 'website'
-    | 'article'
-    | 'news' // news 是非规范的类型，目前视作 article 处理
-    | 'video.moive'
-    | 'video.eposide'
-    | 'video.tv_show'
-    | 'video.other'
-    | 'book'
-    | 'profile'
-    | 'payment.link'
-  siteName?: string
-  image?: string
-  imageAlt?: string
-  // 在 MDC 语法中可能难以指定非字符串类型，在此 hack。
-  // 人工书写时应尽量传入 number 以避免歧义
-  imageWidth?: number | string
-  imageHeight?: number | string
+import type { OgCardProps } from '~/utils/htmlParser.ts'
 
-  articleAuthor?: string
-  articlePublishedTime?: string
-  articleModifiedTime?: string
-  articleExpirationTime?: string
-  articleSection?: string
-  articleTag?: string[]
-
-  video?: string
-  videoWidth?: number | string
-  videoHeight?: number | string
-  // 视频 MIME 类型。对于 text/html 已特殊处理。
-  videoType?: string
-  videoDuration?: number | string
-  videoReleaseDate?: string
-  videoActor?: { name: string; role: string }[]
-  videoDirector?: string[]
-  videoWriter?: string[]
-  videoTag?: string[]
-  videoSeries?: string
-
-  bookAuthor?: string[]
-  bookIsbn?: string
-  bookReleaseDate?: string
-  bookTag?: string[]
+interface Props extends OgCardProps {
+  imageFallback?: string
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   description: '未提供',
   type: 'website',
   siteName: '未提供',
@@ -79,7 +37,11 @@ withDefaults(defineProps<Props>(), {
   bookIsbn: '未提供',
   bookReleaseDate: '未提供',
   bookTag: () => [],
+
+  imageFallback: '',
 })
+
+const imageUrl = ref(props.image)
 
 const play = ref(false)
 
@@ -155,13 +117,14 @@ const foo = (props: { prefix: string; value: string; datetime?: string }) =>
     >
       <img
         referrerpolicy="no-referrer"
-        :src="image"
+        :src="imageUrl"
         :alt="imageAlt"
         :class="[
           isArticle(type) || type === 'book'
             ? 'rounded-l-2xl w-60 h-full object-cover'
             : 'rounded-t-2xl w-full object-cover',
         ]"
+        @error="imageUrl = imageFallback"
       />
 
       <UBadge

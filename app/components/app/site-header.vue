@@ -117,7 +117,7 @@ const items = ref<NavigationMenuItem[]>([
     </template>
 
     <template #right>
-      <UColorModeSelect />
+      <UColorModeSwitch />
     </template>
 
     <template #bottom>

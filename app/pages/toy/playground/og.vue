@@ -33,9 +33,11 @@ useSeoMeta({
 
     <UPageHeader :title="post.title" :description="post.description" />
 
-    <PlaygroundOgDector class="mt-6" />
+    <UPageBody>
+      <PlaygroundOgDector class="mt-6" />
 
-    <ContentRenderer :value="post" />
+      <ContentRenderer :value="post" />
+    </UPageBody>
   </UPage>
 </template>
 
