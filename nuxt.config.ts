@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     'nuxt-shiki',
     'nuxt-ai-ready',
     '@nuxt/fonts',
+    'nuxt-security',
   ],
 
   devtools: {
@@ -66,6 +67,14 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [{ name: 'note sans sc', provider: 'fontsource' }],
+  },
+
+  image: {
+    format: ['avif', 'webp'],
+    provider: 'cloudflare',
+    cloudflare: {
+      baseURL: 'https://mango.js.cn',
+    },
   },
 
   icon: {
@@ -180,6 +189,17 @@ export default defineNuxtConfig({
         // shiki/dist/core.mjs 本身就是 `export * from '@shikijs/core'`）。
         'shiki/core': '@shikijs/core',
       },
+    },
+  },
+
+  security: {
+    contentSecurityPolicyReportOnly: process.env.NODE_ENV !== 'production',
+    headers: {},
+    // 模块在检测到 SSG 构建时，会自动启用以下配置：
+    ssg: {
+      meta: true, // 将 CSP 策略注入为 <meta http-equiv="Content-Security-Policy">
+      hashScripts: true, // 自动为所有静态内联脚本计算并注入 SHA 哈希值
+      hashStyles: false, // 样式根据需求决定是否开启
     },
   },
 
