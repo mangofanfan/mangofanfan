@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B240423 实验安排 · 2026-2027-1</title>
+<style>
+  :root {
+    --bg: #14161a; --panel: #1d2026; --card: #22262e; --border: #2e333c;
+    --text: #e8eaed; --sub: #9aa3af; --accent: #ffb84d; --accent-dim: #8a6428;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.6; padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  header h1 { font-size: 26px; letter-spacing: .5px; }
+  header h1 em { color: var(--accent); font-style: normal; }
+  .sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
+
+  .toolbar {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin: 18px 0 6px;
+  }
+  .toolbar button {
+    background: var(--panel); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer;
+    transition: border-color .15s;
+  }
+  .toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 28px; }
+  .legend span { font-size: 12px; color: var(--sub); display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+  section.week { margin-bottom: 26px; }
+  .week-head {
+    display: flex; align-items: baseline; gap: 12px;
+    border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 10px;
+  }
+  .week-head h2 { font-size: 18px; }
+  .week-head h2 b { color: var(--accent); font-weight: 700; }
+  .week-head .count { color: var(--sub); font-size: 13px; }
+
+  details.card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 8px; overflow: hidden;
+    transition: border-color .15s;
+  }
+  details.card:hover { border-color: #3d434d; }
+  details[open].card { border-color: var(--accent-dim); }
+  details.card summary {
+    list-style: none; cursor: pointer; padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px; user-select: none;
+  }
+  details.card summary::-webkit-details-marker { display: none; }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .when { flex: none; min-width: 108px; }
+  .when .d { font-weight: 600; font-size: 15px; }
+  .when .s { color: var(--sub); font-size: 12.5px; }
+  .course { flex: 1; font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .where { flex: none; color: var(--sub); font-size: 13px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chev { flex: none; color: var(--sub); font-size: 12px; transition: transform .2s; }
+  details[open] .chev { transform: rotate(90deg); }
+
+  .body {
+    padding: 4px 14px 14px 36px; border-top: 1px dashed var(--border);
+    display: grid; grid-template-columns: 88px 1fr; gap: 6px 14px; font-size: 13.5px;
+  }
+  .body dt { color: var(--sub); }
+  .body dd { color: var(--text); }
+  .body .note { color: var(--accent); }
+
+  footer { color: var(--sub); font-size: 12px; margin-top: 36px; border-top: 1px solid var(--border); padding-top: 14px; }
+
+  @media (max-width: 640px) {
+    .where { display: none; }
+    .body { grid-template-columns: 76px 1fr; padding-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>大三上 <em>B240423</em> 实验安排</h1>
+    <p class="sub">2026–2027 学年第 1 学期 · 上机实验共 <span id="stat"></span></p>
+    <div class="toolbar">
+      <button id="btn-expand">全部展开</button>
+      <button id="btn-collapse">全部折叠</button>
+    </div>
+    <div class="legend" id="legend"></div>
+  </header>
+  <main id="app"></main>
+  <footer>
+    数据来源：汇总-2026-2027-1实验实践课程上机安排（1、2、3、4楼）2026.9.18.xlsx，
+    筛选口径：班级字段含 B240423（含 B240419-23 / B240419-25 等范围写法展开）；周六/周日列的「无」不计入。
+  </footer>
+</div>
+
+<script id="exp-data" type="application/json">[{"week": 7, "day": "周二", "dayIdx": 1, "secStart": 1, "secEnd": 2, "course": "linux编程", "exp": "linux基本命令操作", "hours": 2, "cls": "B240423-25, Q240101", "students": 59, "group": 1, "room": "计算机学科楼302", "teacher": "赵广振，孔德畅（研究生）", "note": ""}, {"week": 7, "day": "周四", "dayIdx": 3, "secStart": 3, "secEnd": 4, "course": "数据库系统原理", "exp": "实验一：SQL语言", "hours": 2, "cls": "B240423", "students": 30, "group": 1, "room": "计算机学科楼304、306", "teacher": "顾啸林、彭瑶、研究生", "note": ""}, {"week": 8, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 7, "course": "WEB技术（双语）", "exp": "实验1：浏览器端编程（上）", "hours": 2, "cls": "B240423-25", "students": 120, "group": 1, "room": "计算机学科楼302、304", "teacher": "韩京宇，李莉（黄科涛）", "note": ""}, {"week": 8, "day": "周三", "dayIdx": 2, "secStart": 3, "secEnd": 5, "course": "Windows应用开发（双语）", "exp": "实验1：UI的设计与事件处理", "hours": 3, "cls": "B240419-25", "students": 83, "group": 1, "room": "计算机学科楼302、304", "teacher": "成小惠、王藤遇（研究生）", "note": ""}, {"week": 9, "day": "周一", "dayIdx": 0, "secStart": 3, "secEnd": 4, "course": "编译原理", "exp": "词法分析器的设计", "hours": 2, "cls": "B240423-25", "students": 51, "group": 1, "room": "计算机学科楼401", "teacher": "沙超、高业成（研究生）", "note": ""}, {"week": 9, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 7, "course": "编译原理", "exp": "实验一词法分析器的构造", "hours": 4, "cls": "B240419-23", "students": 60, "group": 1, "room": "计算机学科楼308", "teacher": "李德强、杜哲凯（研究生）", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 9, "day": "周五", "dayIdx": 4, "secStart": 6, "secEnd": 7, "course": "编译原理", "exp": "实验一词法分析器的构造", "hours": 4, "cls": "B240419-23", "students": 60, "group": 1, "room": "计算机学科楼302", "teacher": "李德强、杜哲凯（研究生）", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 10, "day": "周三", "dayIdx": 2, "secStart": 6, "secEnd": 7, "course": "计算机组成原理", "exp": "实验一：Y86程序设计实验", "hours": 2, "cls": "B240423-25", "students": 110, "group": 1, "room": "计算机学科楼403、401、405", "teacher": "陈燕俐，李维维，1225045515张睿（导师：许建）", "note": ""}, {"week": 10, "day": "周三", "dayIdx": 2, "secStart": 8, "secEnd": 9, "course": "计算机组成原理", "exp": "实验二：Arch实验", "hours": 2, "cls": "B240423-25", "students": 110, "group": 1, "room": "计算机学科楼403、405、407", "teacher": "陈燕俐，李维维，1225045515张睿（导师：许建）", "note": ""}, {"week": 11, "day": "周四", "dayIdx": 3, "secStart": 8, "secEnd": 9, "course": "linux编程", "exp": "shell编程", "hours": 2, "cls": "B240423-25,Q240101", "students": 59, "group": 1, "room": "计算机学科楼308", "teacher": "赵广振，孔德畅（研究生）", "note": ""}, {"week": 12, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 7, "course": "WEB技术（双语）", "exp": "实验1：浏览器端编程（下）+实验2：服务器端编程（上）", "hours": 2, "cls": "B240423-25", "students": 120, "group": 1, "room": "计算机学科楼302、304", "teacher": "韩京宇，李莉（黄科涛）", "note": ""}, {"week": 12, "day": "周三", "dayIdx": 2, "secStart": 3, "secEnd": 5, "course": "Windows应用开发（双语）", "exp": "实验2：应用增强、状态管理", "hours": 3, "cls": "B240419-25", "students": 83, "group": 1, "room": "计算机学科楼401、403", "teacher": "成小惠、王藤遇（研究生）", "note": ""}, {"week": 12, "day": "周四", "dayIdx": 3, "secStart": 1, "secEnd": 2, "course": "WEB技术（双语）", "exp": "实验2：服务器端编程（上）", "hours": 2, "cls": "B240423-25", "students": 120, "group": 1, "room": "计算机学科楼302、304", "teacher": "韩京宇，李莉（黄科涛）", "note": ""}, {"week": 13, "day": "周一", "dayIdx": 0, "secStart": 3, "secEnd": 4, "course": "编译原理", "exp": "语法分析器的设计", "hours": 2, "cls": "B240423-25", "students": 51, "group": 1, "room": "计算机学科楼401", "teacher": "沙超、高业成（研究生）", "note": ""}, {"week": 13, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 7, "course": "WEB技术（双语）", "exp": "实验2：服务器端编程（下）", "hours": 2, "cls": "B240423-25", "students": 120, "group": 1, "room": "计算机学科楼302、304", "teacher": "韩京宇，李莉（黄科涛）", "note": ""}, {"week": 13, "day": "周二", "dayIdx": 1, "secStart": 1, "secEnd": 2, "course": "linux编程", "exp": "linux下C编程", "hours": 2, "cls": "B240423-25，Q240101", "students": 59, "group": 1, "room": "计算机学科楼306", "teacher": "赵广振，孔德畅（研究生）", "note": ""}, {"week": 13, "day": "周四", "dayIdx": 3, "secStart": 3, "secEnd": 4, "course": "数据库系统原理", "exp": "实验二：DBMS的数据库保护", "hours": 2, "cls": "B240423", "students": 30, "group": 1, "room": "计算机学科楼302、304", "teacher": "顾啸林、彭瑶、研究生", "note": ""}, {"week": 14, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 7, "course": "编译原理", "exp": "实验二语法分析器的构造", "hours": 4, "cls": "B240419-23", "students": 60, "group": 1, "room": "计算机学科楼306", "teacher": "李德强、杜哲凯（研究生）", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 14, "day": "周二", "dayIdx": 1, "secStart": 3, "secEnd": 4, "course": "信息安全技术", "exp": "安全IP的配置和测试", "hours": 2, "cls": "B240419,B240420,B240421,B240422,B240423,B240424,B240425", "students": 183, "group": 1, "room": "计算机学科楼306、308、314、304", "teacher": "张平、张波", "note": ""}, {"week": 14, "day": "周三", "dayIdx": 2, "secStart": 1, "secEnd": 5, "course": "软件工程原理与实践", "exp": "软件需求分析、软件设计", "hours": 8, "cls": "B240422-25", "students": 118, "group": 1, "room": "计算机学科楼302、304", "teacher": "毛燕琴，程晶晶，潘文婵", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 14, "day": "周五", "dayIdx": 4, "secStart": 6, "secEnd": 7, "course": "编译原理", "exp": "实验二语法分析器的构造", "hours": 4, "cls": "B240419-23", "students": 60, "group": 1, "room": "学科楼306", "teacher": "李德强、杜哲凯（研究生）", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 14, "day": "周五", "dayIdx": 4, "secStart": 6, "secEnd": 8, "course": "软件工程原理与实践", "exp": "软件需求分析、软件设计", "hours": 8, "cls": "B240422-25", "students": 118, "group": 1, "room": "计算机学科楼302、304", "teacher": "毛燕琴，程晶晶，潘文婵", "note": "该实验在本周排有多个时段（多班分流），B240423 实际参加时段以班级/教师通知为准"}, {"week": 15, "day": "周一", "dayIdx": 0, "secStart": 2, "secEnd": 5, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼306", "teacher": "毛燕琴", "note": ""}, {"week": 15, "day": "周二", "dayIdx": 1, "secStart": 2, "secEnd": 5, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼306", "teacher": "毛燕琴", "note": ""}, {"week": 15, "day": "周三", "dayIdx": 2, "secStart": 6, "secEnd": 7, "course": "计算机组成原理", "exp": "实验三： Cache实验", "hours": 2, "cls": "B240423-25", "students": 110, "group": 1, "room": "计算机学科楼405、407、403", "teacher": "陈燕俐，李维维，1225045515张睿（导师：许建）", "note": ""}, {"week": 15, "day": "周三", "dayIdx": 2, "secStart": 8, "secEnd": 9, "course": "计算机组成原理", "exp": "实验四：异常处理实验", "hours": 2, "cls": "B240423-25", "students": 110, "group": 1, "room": "计算机学科楼403、405、407", "teacher": "陈燕俐，李维维，1225045515张睿（导师：许建）", "note": ""}, {"week": 15, "day": "周四", "dayIdx": 3, "secStart": 2, "secEnd": 5, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼304", "teacher": "毛燕琴", "note": ""}, {"week": 15, "day": "周五", "dayIdx": 4, "secStart": 2, "secEnd": 5, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼302", "teacher": "毛燕琴", "note": ""}, {"week": 16, "day": "周一", "dayIdx": 0, "secStart": 6, "secEnd": 9, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼302", "teacher": "毛燕琴", "note": ""}, {"week": 16, "day": "周二", "dayIdx": 1, "secStart": 6, "secEnd": 9, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼302", "teacher": "毛燕琴", "note": ""}, {"week": 16, "day": "周四", "dayIdx": 3, "secStart": 6, "secEnd": 9, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼304", "teacher": "毛燕琴", "note": ""}, {"week": 16, "day": "周五", "dayIdx": 4, "secStart": 6, "secEnd": 9, "course": "软件基础实践", "exp": "实践性环节", "hours": 16, "cls": "B240423", "students": 33, "group": 1, "room": "计算机学科楼302", "teacher": "毛燕琴", "note": ""}, {"week": 17, "day": "周二", "dayIdx": 1, "secStart": 3, "secEnd": 4, "course": "信息安全技术", "exp": "安全IP的配置和测试", "hours": 2, "cls": "B240419-25", "students": 183, "group": 1, "room": "计算机学科楼306、308、314、304", "teacher": "张平、张波", "note": ""}, {"week": 17, "day": "周三", "dayIdx": 2, "secStart": 1, "secEnd": 4, "course": "数据库系统原理", "exp": "实验三 小型MIS开发", "hours": 2, "cls": "B240423", "students": 30, "group": 1, "room": "计算机学科楼306、308", "teacher": "顾啸林、彭瑶、研究生", "note": ""}]</script>
+<script>
+const DATA = JSON.parse(document.getElementById('exp-data').textContent);
+const DAY_ORDER = ['周一','周二','周三','周四','周五','周六','周日'];
+
+// 课程 -> 色相（色环均分）
+const courses = [...new Set(DATA.map(r => r.course))].sort((a,b) => a.localeCompare(b, 'zh'));
+const hue = {};
+courses.forEach((c, i) => hue[c] = Math.round(i * 360 / courses.length));
+const dotColor = c => `hsl(${hue[c]}, 60%, 62%)`;
+
+// 统计
+const weeks = [...new Set(DATA.map(r => r.week))].sort((a,b)=>a-b);
+document.getElementById('stat').textContent =
+  `${DATA.length} 条 · ${courses.length} 门课程 · 第 ${weeks[0]}–${weeks[weeks.length - 1]} 周`;
+
+// 图例
+document.getElementById('legend').innerHTML = courses
+  .map(c => `<span><i style="background:${dotColor(c)}"></i>${c}</span>`).join('');
+
+// 按周分组渲染
+const app = document.getElementById('app');
+let html = '';
+for (const w of weeks) {
+  const rows = DATA.filter(r => r.week === w);
+  html += `<section class="week">
+    <div class="week-head"><h2>第 <b>${w}</b> 周</h2><span class="count">${rows.length} 条</span></div>`;
+  for (const r of rows) {
+    html += `<details class="card">
+      <summary>
+        <span class="dot" style="background:${dotColor(r.course)}"></span>
+        <span class="when"><span class="d">${r.day}</span><br><span class="s">第 ${r.secStart}–${r.secEnd} 节</span></span>
+        <span class="course">${esc(r.course)}</span>
+        <span class="where">${esc(r.room)}</span>
+        <span class="chev">▶</span>
+      </summary>
+      <dl class="body">
+        <dt>实验项目</dt><dd>${esc(r.exp)}</dd>
+        <dt>上课班级</dt><dd>${esc(r.cls)}</dd>
+        <dt>学生人数</dt><dd>${esc(String(r.students ?? '—'))}</dd>
+        <dt>每组人数</dt><dd>${esc(String(r.group ?? '—'))}</dd>
+        <dt>实验总学时</dt><dd>${esc(String(r.hours ?? '—'))}</dd>
+        <dt>开课地点</dt><dd>${esc(r.room)}</dd>
+        <dt>指导教师</dt><dd>${esc(r.teacher)}</dd>
+        ${r.note ? `<dt>备注</dt><dd class="note">${esc(r.note)}</dd>` : ''}
+      </dl>
+    </details>`;
+  }
+  html += `</section>`;
+}
+app.innerHTML = html;
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, m =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+// 全部展开 / 折叠
+document.getElementById('btn-expand').onclick = () =>
+  document.querySelectorAll('details.card').forEach(d => d.open = true);
+document.getElementById('btn-collapse').onclick = () =>
+  document.querySelectorAll('details.card').forEach(d => d.open = false);
+</script>
+</body>
+</html>

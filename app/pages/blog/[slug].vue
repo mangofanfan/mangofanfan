@@ -40,7 +40,12 @@ useSeoMeta({
   <div class="blog-page">
     <UPageHeader :title="post!.title" :description="post!.description">
       <template #default>
-        <NuxtImg v-if="post?.image" :src="post.image" class="mt-6 rounded-lg" />
+        <NuxtPicture
+          v-if="post?.image"
+          :src="post.image"
+          :img-attrs="{ class: 'mt-6 rounded-lg' }"
+          alt="blog feature image"
+        />
       </template>
     </UPageHeader>
 

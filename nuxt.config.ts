@@ -194,7 +194,12 @@ export default defineNuxtConfig({
 
   security: {
     contentSecurityPolicyReportOnly: process.env.NODE_ENV !== 'production',
-    headers: {},
+    headers: {
+      contentSecurityPolicy: {
+        'require-trusted-types-for': "'script'",
+        'trusted-types': 'vue',
+      },
+    },
     // 模块在检测到 SSG 构建时，会自动启用以下配置：
     ssg: {
       meta: true, // 将 CSP 策略注入为 <meta http-equiv="Content-Security-Policy">
