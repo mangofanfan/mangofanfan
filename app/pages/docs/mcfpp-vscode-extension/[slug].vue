@@ -33,7 +33,7 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogUrl: 'https://mango.js.cn' + page.value.path,
+  ogUrl: 'https://mango.js.cn' + page.value.path + '/',
   ogType: 'article',
   articlePublishedTime: page.value.publishedDate,
   articleModifiedTime: page.value.modifiedDate,

@@ -18,7 +18,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'article',
-  ogUrl: 'https://mango.js.cn/toy/backup/textmate',
+  ogUrl: 'https://mango.js.cn/toy/backup/textmate/',
   ogImage: { url: 'https://mango.js.cn/images/toys/index-textmate.png', type: 'image/png' },
 })
 

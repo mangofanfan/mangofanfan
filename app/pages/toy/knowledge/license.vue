@@ -40,6 +40,7 @@ useSeoMeta({
   ogDescription: description,
   ogType: 'article',
   ogImage: { url: 'https://mango.js.cn/images/toys/index-license.png', type: 'image/png' },
+  ogUrl: 'https://mango.js.cn/toy/knowledge/license/',
 })
 </script>
 

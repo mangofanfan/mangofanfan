@@ -20,6 +20,7 @@ useSeoMeta({
     url: 'https://mango.js.cn/images/toys/index-og.png',
     type: 'image/png',
   },
+  ogUrl: 'https://mango.js.cn/toy/playground/og/',
 })
 </script>
 

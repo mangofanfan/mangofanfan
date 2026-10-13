@@ -13,7 +13,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: 'https://mango.js.cn/toy',
+  ogUrl: 'https://mango.js.cn/toy/',
   ogImage: { url: 'https://mango.js.cn/images/toys/index-taki.png', type: 'image/png' },
 })
 
@@ -22,7 +22,7 @@ const knowledgePosts = ref<BlogPostProps[]>([
     title: '开源许可证',
     description: '关于开源许可证的你所需要知道的信息',
     image: '/images/toys/index-license.png',
-    to: '/toy/knowledge/license',
+    to: '/toy/knowledge/license/',
   },
 ])
 const backupPosts = ref<BlogPostProps[]>([
@@ -31,7 +31,7 @@ const backupPosts = ref<BlogPostProps[]>([
     description: '编写语法的一些经验和教训',
     badge: '翻译',
     image: '/images/toys/index-textmate.png',
-    to: '/toy/backup/textmate',
+    to: '/toy/backup/textmate/',
   },
 ])
 const playgroundPosts = ref<BlogPostProps[]>([
@@ -39,7 +39,7 @@ const playgroundPosts = ref<BlogPostProps[]>([
     title: '开放图谱协议分析仪',
     description: '检查链接的理想最佳显示效果',
     image: '/images/toys/index-og.png',
-    to: '/toy/playground/og',
+    to: '/toy/playground/og/',
   },
 ])
 </script>
@@ -58,9 +58,10 @@ const playgroundPosts = ref<BlogPostProps[]>([
       description="一些奇妙的：冷知识 / 热知识 / 温知识 / 小工具 / 小道具 / 小玩具 / ..."
       orientation="horizontal"
     >
-      <NuxtImg
+      <NuxtPicture
         src="/images/toys/index-taki.png"
-        class="size-64 rounded-full shadow-2xl ring ring-default"
+        :img-attrs="{ class: 'size-64 rounded-full shadow-2xl ring ring-default' }"
+        alt="decoration - takiduo"
       />
     </UPageHero>
 
