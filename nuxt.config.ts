@@ -66,7 +66,10 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   fonts: {
-    families: [{ name: 'note sans sc', provider: 'fontsource' }],
+    families: [
+      { name: 'Noto Sans SC Variable', provider: 'npm' },
+      { name: 'Noto Serif SC Variable', provider: 'npm' },
+    ],
   },
 
   image: {
@@ -197,8 +200,12 @@ export default defineNuxtConfig({
     headers: {
       contentSecurityPolicy: {
         'require-trusted-types-for': "'script'",
-        'trusted-types': 'vue',
+        'trusted-types': [
+          'vue', // Vue 需要
+          'sanitizer', // 保留，允许部分浏览器扩展使用此规则，比如沉浸式翻译
+        ],
       },
+      crossOriginResourcePolicy: 'cross-origin',
     },
     // 模块在检测到 SSG 构建时，会自动启用以下配置：
     ssg: {

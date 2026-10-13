@@ -22,6 +22,24 @@ useSeoMeta({
   ogImage: { url: 'https://mango.js.cn/images/toys/index-textmate.png', type: 'image/png' },
 })
 
+useSchemaOrg([
+  defineWebPage({
+    translationOfWork: {
+      '@type': 'CreativeWork',
+      name: 'Writing a TextMate Grammar: Some Lessons Learned',
+      inLanguage: 'en',
+      author: {
+        '@id': 'https://www.apeth.com/#matt-neuburg',
+      },
+    },
+  }),
+  definePerson({
+    '@id': 'https://www.apeth.com/#matt-neuburg',
+    name: 'Matt Neuburg',
+    url: 'https://www.apeth.com/',
+  }),
+])
+
 const items = ref<TabsItem[]>([
   {
     label: '原文',
@@ -125,7 +143,11 @@ const links: TocLink[] = [
   <UPage>
     <UPageHeader :title :description>
       <div class="w-full flex flex-col items-center pt-6">
-        <NuxtImg src="/images/toys/index-textmate.png" class="rounded-lg shadow-2xl max-w-[80%]" />
+        <NuxtPicture
+          src="/images/toys/index-textmate.png"
+          class="max-w-[80%]"
+          :img-attrs="{ class: 'rounded-lg shadow-2xl' }"
+        />
       </div>
     </UPageHeader>
 
