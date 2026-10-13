@@ -12,7 +12,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: 'https://mango.js.cn/mcfpp-extension/',
+  ogUrl: 'https://mango.js.cn/mcfpp-extension',
 })
 </script>
 
@@ -26,8 +26,7 @@ useSeoMeta({
         {
           label: '开始使用',
           icon: 'lucide:play',
-          to: '/docs/mcfpp-vscode-extension/start/',
-          target: '_blank',
+          to: '/docs/mcfpp-vscode-extension/start',
         },
         {
           label: 'GitHub',

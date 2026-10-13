@@ -15,7 +15,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: 'https://mango.js.cn/blog/',
+  ogUrl: 'https://mango.js.cn/blog',
 })
 </script>
 
@@ -26,7 +26,7 @@ useSeoMeta({
         v-for="post of posts"
         :key="post.path"
         v-bind="post"
-        :to="post.path + '/'"
+        :to="post.path"
         variant="soft"
       />
     </UBlogPosts>

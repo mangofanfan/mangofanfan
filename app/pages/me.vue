@@ -33,7 +33,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: 'https://mango.js.cn/me/',
+  ogUrl: 'https://mango.js.cn/me',
 })
 </script>
 

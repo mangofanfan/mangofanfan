@@ -11,7 +11,7 @@ const items = ref<NavigationMenuItem[]>([
   {
     label: '芒果帆帆',
     icon: 'lucide:house',
-    to: '/me/',
+    to: '/me',
   },
   {
     label: '项目导览',
@@ -20,19 +20,19 @@ const items = ref<NavigationMenuItem[]>([
       {
         label: '芒果客栈的在线小玩具',
         description: '来玩玩具喵！来玩玩具谢谢喵！',
-        to: '/toy/',
+        to: '/toy',
       },
       {
         label: '适用于 VS Code 的 MCFPP 扩展',
         description: '为 VS Code 提供 MCFPP 语言的高级支持的扩展',
-        to: '/mcfpp-extension/',
+        to: '/mcfpp-extension',
       },
     ],
   },
   {
     label: '芒果日志',
     icon: 'lucide:calendar-range',
-    to: '/blog/',
+    to: '/blog',
   },
   {
     label: 'MCFPP',
@@ -41,12 +41,12 @@ const items = ref<NavigationMenuItem[]>([
       {
         label: 'MCFPP',
         description: '为 Minecraft 数据包开发所设计的高级编程语言',
-        to: '/docs/mcfpp/introduction/',
+        to: '/docs/mcfpp/introduction',
       },
       {
         label: 'MCFPP VS Code 扩展',
         description: '为 VS Code 提供 MCFPP 语言的高级支持的扩展',
-        to: '/docs/mcfpp-vscode-extension/start/',
+        to: '/docs/mcfpp-vscode-extension/start',
       },
     ],
   },

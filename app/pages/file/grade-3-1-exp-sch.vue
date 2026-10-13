@@ -15,7 +15,7 @@ useSeoMeta({
   ogType: 'website',
   ogTitle: title,
   ogDescription: description,
-  ogUrl: 'https://mango.js.cn/file/grade-3-1-exp-sch/',
+  ogUrl: 'https://mango.js.cn/file/grade-3-1-exp-sch',
 })
 
 const setFileInfo = inject('set-file-meta') as (arg1: string, arg2: string, arg3: string) => void
