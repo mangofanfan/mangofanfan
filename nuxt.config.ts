@@ -199,6 +199,13 @@ export default defineNuxtConfig({
     contentSecurityPolicyReportOnly: process.env.NODE_ENV !== 'production',
     headers: {
       contentSecurityPolicy: {
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          "'strict-dynamic'",
+          "'nonce-{{nonce}}'",
+          "'wasm-unsafe-eval'",
+        ],
         'require-trusted-types-for': "'script'",
         'trusted-types': [
           'vue', // Vue 需要
