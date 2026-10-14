@@ -198,7 +198,7 @@ export default defineNuxtConfig({
     contentSecurityPolicyReportOnly: process.env.NODE_ENV !== 'production',
     headers: {
       contentSecurityPolicy: {
-        'img-src': ["'self'", 'data:', 'https://mango.js.cn/'],
+        'img-src': ["'self'", 'data:', 'https:'],
         'script-src': [
           "'self'",
           "'unsafe-inline'",

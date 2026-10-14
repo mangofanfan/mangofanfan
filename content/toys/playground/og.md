@@ -50,6 +50,12 @@ description: 检查一个链接的理想状态最佳显示效果！
 * `og:locale` - 页面语言，形式为 `en_US`、`zh_CN`
 * `og:site_name` - 站点名称，所以没有必要像 `<title>` 标签一样把站点名称跟在 `og:title` 中
 
+::message{level=warning}
+如果提供 `og:image` 等资源，分析仪只允许 `https:` 协议。
+
+这是因为芒果客栈本身位于 `https:` 协议下，且启用了严格的[内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/CSP)。因此，`http:` 资源会被浏览器拦截。
+::
+
 ## 效果速查
 
 ### og:type=website
