@@ -11,7 +11,7 @@ provide('set-file-meta', (arg1: string, arg2: string, arg3: string) => {
 </script>
 
 <template>
-  <div class="file-layout flex flex-col gap-y-4">
+  <div class="file-layout p-6 flex flex-col gap-y-4">
     <div class="bg-muted border border-info rounded-md flex flex-row px-5 py-3 gap-x-4">
       <UIcon :name="iconname" class="size-16" />
 

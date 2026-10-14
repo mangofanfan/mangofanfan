@@ -134,10 +134,6 @@ export default defineNuxtConfig({
     },
   },
 
-  routeRules: {
-    '/': { prerender: true },
-  },
-
   devServer: {
     port: 4000,
   },
@@ -222,6 +218,11 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/': { prerender: true },
+    '/rss.xml': { headers: { 'content-type': 'application/rss+xml; charset=utf-8' } },
+  },
+
   // ？！大肥鱼和 GLM 都强强！？
   nitro: {
     // 仅在构建部署（nuxt build / generate，NODE_ENV=production）时启用 Cloudflare preset。
@@ -235,8 +236,8 @@ export default defineNuxtConfig({
     // 混合模式核心：全站预渲染
     prerender: {
       crawlLinks: true, // 从入口路由沿链接爬取所有页面（含所有博客文章）
-      routes: ['/'], // 入口：首页
-      ignore: ['/api/**'], // 部分 API 不预渲染，留给 Worker 运行时执行
+      routes: ['/', '/rss.xml'],
+      ignore: ['/api/**'], // API 不预渲染，留给 Worker 运行时执行
     },
 
     cloudflare: {

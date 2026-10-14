@@ -17,6 +17,7 @@ export default defineContentConfig({
           })
           .optional(),
         sitemap: defineSitemapSchema(),
+        rawbody: z.string(), // 用于 RSS 的原始 Markdown
         date: z.date(),
         image: z.string(),
         tags: z.array(z.string()),
