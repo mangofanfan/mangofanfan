@@ -7,6 +7,9 @@ const { data: posts } = useAsyncData('blog-posts', async () => {
   return queryCollection('blog').where('published', '=', true).order('date', 'DESC').all()
 })
 
+const clearTocLinks = inject('clear-toc-links') as () => void
+clearTocLinks()
+
 const title = '芒果日志中心页'
 const description = '芒果帆帆的博客的中心索引页'
 useSeoMeta({

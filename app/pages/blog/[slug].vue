@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TocLink } from '@nuxt/content'
+
 definePageMeta({
   layout: 'blog',
 })
@@ -18,6 +20,9 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
+
+const setTocLinks = inject('set-toc-links') as (links: TocLink[]) => void
+setTocLinks(post.value.body.toc?.links ?? [])
 
 const title = post.value.title
 const description = post.value.description
@@ -56,10 +61,6 @@ useSeoMeta({
 
       <UContentSurround :surround />
     </UPageBody>
-
-    <teleport to="#blog-aside-right">
-      <UContentToc :links="post!.body.toc!.links" highlight highlight-variant="circuit" />
-    </teleport>
   </div>
 </template>
 

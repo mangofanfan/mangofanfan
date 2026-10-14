@@ -47,7 +47,7 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: '芒果帆帆的全新个人网站喵！' },
-        { name: 'keywords', content: '芒果帆帆, MangoFanFan, Nuxt' },
+        { name: 'keywords', content: '芒果帆帆,MangoFanFan,Nuxt,博客' },
         { property: 'og:side_name', content: '芒果客栈[mango.js]' },
         { property: 'og:locale', content: 'zh_CN' },
         { name: 'apple-mobile-web-app-title', content: '芒果客栈' },
@@ -58,6 +58,9 @@ export default defineNuxtConfig({
         { rel: 'shortcut icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'alternate', type: 'application/rss+xml', title: '芒果客栈', href: '/rss.xml' },
+        { rel: 'alternate', type: 'application/atom+xml', title: '芒果客栈', href: '/atom.xml' },
+        { rel: 'alternate', type: 'application/feed+json', title: '芒果客栈', href: '/feed.json' },
       ],
       htmlAttrs: { lang: 'zh-CN' },
     },
@@ -195,6 +198,7 @@ export default defineNuxtConfig({
     contentSecurityPolicyReportOnly: process.env.NODE_ENV !== 'production',
     headers: {
       contentSecurityPolicy: {
+        'img-src': ["'self'", 'data:', 'https://mango.js.cn/'],
         'script-src': [
           "'self'",
           "'unsafe-inline'",
@@ -221,6 +225,8 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/rss.xml': { headers: { 'content-type': 'application/rss+xml; charset=utf-8' } },
+    '/atom.xml': { headers: { 'content-type': 'application/atom+xml; charset=utf-8' } },
+    '/feed.json': { headers: { 'content-type': 'application/feed+json; charset=utf-8' } },
   },
 
   // ？！大肥鱼和 GLM 都强强！？
@@ -236,7 +242,7 @@ export default defineNuxtConfig({
     // 混合模式核心：全站预渲染
     prerender: {
       crawlLinks: true, // 从入口路由沿链接爬取所有页面（含所有博客文章）
-      routes: ['/', '/rss.xml'],
+      routes: ['/', '/rss.xml', '/atom.xml', '/feed.json'],
       ignore: ['/api/**'], // API 不预渲染，留给 Worker 运行时执行
     },
 
