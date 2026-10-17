@@ -16,8 +16,10 @@
   },
   "d1_databases": [
     {
-      "binding": "DB_COMMENT",
-      "database_id": "531529fc-b381-46f3-a596-6eeb02bd7716"
+      "binding": "DB",
+      "database_id": "531529fc-b381-46f3-a596-6eeb02bd7716",
+      "migrations_table": "_hub_migrations",
+      "migrations_dir": "server/db/migrations/sqlite/"
     }
   ],
   "vars": {

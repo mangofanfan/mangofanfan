@@ -1,0 +1,1 @@
+ALTER TABLE `comments` ADD `show` integer DEFAULT true NOT NULL;
