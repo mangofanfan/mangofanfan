@@ -2,9 +2,9 @@
 title: Nuxt 站点「芒果客栈」现状
 description: 芒果帆帆使用 Nuxt 终于又一次建好了新的网站的框架，希望这一次可以坚持地稍微久一点。如果能有十年就好了。
 tags: [ Nuxt, 博客, 十年之约, 评论系统 ]
-date: 2026-10-15
-image: /images/20261015/for-ten-years.png
-published: false
+date: 2026-10-17
+image: /images/20261017/for-ten-years.png
+published: true
 ---
 
 ## 客栈起源
@@ -78,6 +78,17 @@ Nuxt 生态中没有可以开箱即用的评论模块，可能是因为评论系
 
 因此，芒果引入了 [Nuxt Hub](https://hub.nuxt.com/) 模块以提供数据库服务，在此基础上计划自行实现基于 CloudFlare Worker + D1 数据库的评论功能。
 
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  // 无关内容省略
+  hub: {
+    db: 'sqlite',
+  },
+})
+```
+
+是的！只要这一行，就足够让 Nuxt Hub 自动在 CloudFlare Worker 构建部署时连接到 CloudFlare D1 了。虽然实际上还有很多准备工作要完成，那些不在本篇日志的介绍范围内了~
+
 在这篇日志的底部，以及以往和将来的日志页面，都会提供评论系统。评论组件使用 `<ClientOnly>` 包围，以避免 SSG 部署时评论系统必然产生的水合问题。
 
 评论表单使用 [CloudFlare Turnstile](https://developers.cloudflare.com/turnstile/) 保护。
@@ -85,3 +96,29 @@ Nuxt 生态中没有可以开箱即用的评论模块，可能是因为评论系
 评论者的头像通过 [Cravatar](https://cn.cravatar.com/) 提供，基于电子邮件地址获取。
 
 芒果还配套编写了[隐私政策](/site/privacy)和[客栈守则](/site/guide)。
+
+评论功能未来仍然需要继续完善。目前尚不存在以下功能：
+
+* 对已存在的评论进行回复；
+* 收到回复时进行邮件提醒；
+* 第三方登录，例如 :term-tip-github 。
+
+未来计划添加这些功能。
+
+### 友链空间
+
+芒果客栈已经添加了[友链空间](/site/friends)页面。如果您也有自己的在线博客，可以在该页面中添加您的博客。
+
+所有信息都在该页面中有所说明。
+
+### Feed
+
+芒果客栈的「芒果日志」栏目已经添加了三种格式的 Feed：[RSS](/rss.xml)、[ATOM](/atom.xml) 和 [JSON](/feed.json)。
+
+这三个文件将在构建时自动生成。你可以使用订阅软件订阅任意支持的链接，以在不访问芒果客栈的情况下查看最新的日志。
+
+提供 Feed 的主要原因其实是为了适配[十年之约](https://www.foreverblog.cn/)……
+
+虽然从我开始做网站以及搭博客开始，应该有六七年左右了，但是过去的网站终究还是没有挺到如今呢。
+
+那就希望这一次可以坚持地稍微久一点。如果能有十年就好了。

@@ -60,9 +60,16 @@ useHead({
         avatar-url="https://oss.starxw.com/Nexts/favicon.png"
         image-url="https://starxn.com/assets/cover.webp"
       />
+      <app-friend-card
+        link="https://www.foreverblog.cn/"
+        name="十年之约"
+        description="从加入那天起，博客十年不关，或者更久，并且一直在写。"
+        avatar-url="https://www.foreverblog.cn/favicon.ico"
+        image-url="/images/20261015/for-ten-years.png"
+      />
     </div>
 
-    <UCard v-if="page" title="提交您的博客站点">
+    <UCard v-if="page" class="mt-36" title="提交您的博客站点">
       <ContentRenderer :value="page" />
 
       <ClientOnly>
