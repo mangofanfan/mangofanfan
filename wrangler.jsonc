@@ -19,5 +19,9 @@
       "binding": "DB_COMMENT",
       "database_id": "531529fc-b381-46f3-a596-6eeb02bd7716"
     }
-  ]
+  ],
+  "vars": {
+    "NUXT_HUB_CLOUDFLARE_ACCOUNT_ID": "957be19c706ca2e85429d0e436a2cfa5",
+    "NUXT_HUB_CLOUDFLARE_DATABASE_ID": "531529fc-b381-46f3-a596-6eeb02bd7716"
+  }
 }
