@@ -4,6 +4,7 @@ description: 芒果帆帆使用 Nuxt 终于又一次建好了新的网站的框�
 tags: [ Nuxt, 博客, 十年之约, 评论系统 ]
 date: 2026-10-15
 image: /images/20261015/for-ten-years.png
+published: false
 ---
 
 ## 客栈起源
