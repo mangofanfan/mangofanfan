@@ -42,6 +42,7 @@ function initTurnstile() {
 }
 // 刷新 Turnstile 小部件
 function reloadTurnstile() {
+  turnstileToken.value = ''
   if (turnstileWidgetId) turnstile.reset(turnstileWidgetId)
 }
 

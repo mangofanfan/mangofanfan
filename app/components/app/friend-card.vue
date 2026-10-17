@@ -26,6 +26,7 @@ defineProps<Props>()
         :avatar="{
           src: avatarUrl,
           alt: `${name} 的博客 logo`,
+          as: { img: 'img' },
         }"
       />
     </template>

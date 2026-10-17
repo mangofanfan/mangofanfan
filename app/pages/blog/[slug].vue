@@ -34,7 +34,6 @@ useHead({
       src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit',
       type: 'text/javascript',
       defer: true,
-      tagPosition: 'bodyClose',
       key: 'turnstile',
       id: 'turnstile',
     },
