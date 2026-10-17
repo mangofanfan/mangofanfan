@@ -6,6 +6,8 @@ const { route } = defineProps<{
 }>()
 const emits = defineEmits<{ comment: [status: boolean] }>()
 
+const toast = useToast()
+
 const status = ref<'hidden' | 'show' | 'loading'>('hidden')
 
 const schema = z.object({
@@ -26,6 +28,15 @@ const turnstileToken = ref('')
 let turnstileWidgetId: string | null = null
 // 加载 CloudFlare Challenge 脚本后，Turnstile 示例位于 Window 上。
 function initTurnstile() {
+  if (!turnstile) {
+    toast.add({
+      title: '错误：CloudFlare Turnstile 未加载',
+      description: '这意味着评论表单功能失效。这并不是您的问题，请稍后再试。',
+      color: 'error',
+    })
+    return
+  }
+
   turnstileWidgetId = turnstile.render('#turnstile-container', {
     sitekey: '0x4AAAAAAFXdbTxM6IDtE_vI',
     callback: function (token) {
@@ -59,7 +70,6 @@ watch(status, (value) => {
   }
 })
 
-const toast = useToast()
 async function onSubmit() {
   status.value = 'loading'
   try {

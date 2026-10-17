@@ -218,7 +218,7 @@ export default defineNuxtConfig({
           "'strict-dynamic'",
           "'nonce-{{nonce}}'",
           "'wasm-unsafe-eval'",
-          'challenges.cloudflare.com', // CloudFlare Turnstile 挑战域名
+          'https://challenges.cloudflare.com', // CloudFlare Turnstile 挑战域名
         ],
         'require-trusted-types-for': "'script'",
         'trusted-types': [
