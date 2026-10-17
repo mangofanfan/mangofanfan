@@ -67,5 +67,9 @@ export default defineContentConfig({
         image: z.string(),
       }),
     }),
+    site: defineCollection({
+      type: 'page',
+      source: 'site/*.md',
+    }),
   },
 })

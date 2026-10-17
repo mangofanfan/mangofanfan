@@ -13,5 +13,11 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB_COMMENT",
+      "database_id": "531529fc-b381-46f3-a596-6eeb02bd7716"
+    }
+  ]
 }

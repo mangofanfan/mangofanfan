@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     'nuxt-ai-ready',
     '@nuxt/fonts',
     'nuxt-security',
+    '@nuxthub/core',
   ],
 
   devtools: {
@@ -77,7 +78,7 @@ export default defineNuxtConfig({
 
   image: {
     format: ['avif', 'webp'],
-    provider: 'cloudflare',
+    provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'ipx',
     cloudflare: {
       baseURL: 'https://mango.js.cn',
     },
@@ -90,6 +91,18 @@ export default defineNuxtConfig({
         dir: './app/assets/icons',
       },
     ],
+  },
+
+  hub: {
+    db: 'sqlite',
+  },
+
+  runtimeConfig: {
+    turnstileSecret: '',
+
+    public: {
+      turnstileSiteKey: '0x4AAAAAAFXdbTxM6IDtE_vI',
+    },
   },
 
   site: {
@@ -205,6 +218,7 @@ export default defineNuxtConfig({
           "'strict-dynamic'",
           "'nonce-{{nonce}}'",
           "'wasm-unsafe-eval'",
+          'challenges.cloudflare.com', // CloudFlare Turnstile 挑战域名
         ],
         'require-trusted-types-for': "'script'",
         'trusted-types': [
@@ -249,6 +263,14 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
+    },
+  },
+
+  typescript: {
+    appTsConfig: {
+      compilerOptions: {
+        types: ['cloudflare-turnstile'],
+      },
     },
   },
 })

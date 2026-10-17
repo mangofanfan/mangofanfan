@@ -27,7 +27,19 @@ setTocLinks(post.value.body.toc?.links ?? [])
 const title = post.value.title
 const description = post.value.description
 // @ts-expect-error 无能为力的类型警告但似乎不影响？
-useHead(post.value.head)
+useHead({
+  ...post.value.head,
+  script: [
+    {
+      src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit',
+      type: 'text/javascript',
+      defer: true,
+      tagPosition: 'bodyClose',
+      key: 'turnstile',
+      id: 'turnstile',
+    },
+  ],
+})
 useSeoMeta({
   title,
   description,
@@ -60,6 +72,10 @@ useSeoMeta({
       <USeparator icon="lucide:book" />
 
       <UContentSurround :surround />
+
+      <ClientOnly>
+        <app-comment :route="route.path" />
+      </ClientOnly>
     </UPageBody>
   </div>
 </template>
