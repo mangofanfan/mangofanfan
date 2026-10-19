@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-shiki',
     'nuxt-ai-ready',
+    'nuxt-seo-utils',
     '@nuxt/fonts',
     'nuxt-security',
     '@nuxthub/core',
@@ -109,6 +110,11 @@ export default defineNuxtConfig({
     name: '芒果.js',
     url: 'https://mango.js.cn/',
     description: '芒果帆帆的全新个人网站喵！',
+    defaultLocale: 'zh-CN',
+  },
+
+  sitemap: {
+    zeroRuntime: true,
   },
 
   robots: {
@@ -240,6 +246,11 @@ export default defineNuxtConfig({
     '/rss.xml': { headers: { 'content-type': 'application/rss+xml; charset=utf-8' } },
     '/atom.xml': { headers: { 'content-type': 'application/atom+xml; charset=utf-8' } },
     '/feed.json': { headers: { 'content-type': 'application/feed+json; charset=utf-8' } },
+    '/404.html': { prerender: true }, // ← 补上这一行，兜底页才会被构建出来
+  },
+
+  experimental: {
+    prerenderErrorPages: true, // ← 不加它，404.html 只是空壳
   },
 
   // ？！大肥鱼和 GLM 都强强！？

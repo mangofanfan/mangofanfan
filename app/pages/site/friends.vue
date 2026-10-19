@@ -65,7 +65,7 @@ useHead({
         name="十年之约"
         description="从加入那天起，博客十年不关，或者更久，并且一直在写。"
         avatar-url="https://www.foreverblog.cn/favicon.ico"
-        image-url="/images/20261015/for-ten-years.png"
+        image-url="/images/20261017/for-ten-years.png"
       />
     </div>
 

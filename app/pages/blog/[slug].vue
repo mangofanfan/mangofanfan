@@ -53,20 +53,47 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="blog-page">
-    <UPageHeader :title="post!.title" :description="post!.description">
+  <div v-if="post" class="blog-page">
+    <UPageHeader
+      :title="post.title"
+      :description="post.description"
+      :links="[
+        {
+          label: 'Markdown',
+          type: 'button',
+          color: 'secondary',
+          icon: 'ant-design:file-markdown-twotone',
+          to: post.path + '.md',
+          target: '_blank',
+        },
+      ]"
+    >
       <template #default>
-        <NuxtPicture
-          v-if="post?.image"
-          :src="post.image"
-          :img-attrs="{ class: 'mt-6 rounded-lg' }"
-          alt="blog feature image"
-        />
+        <div class="flex flex-col gap-y-5">
+          <div class="mt-6 flex flex-row gap-x-3 flex-wrap">
+            <UBadge
+              v-for="tag of post.tags"
+              :key="tag"
+              color="neutral"
+              variant="outline"
+              icon="lucide:tag"
+              size="lg"
+              :label="tag"
+            />
+          </div>
+
+          <NuxtPicture
+            v-if="post.image"
+            :src="post.image"
+            :img-attrs="{ class: 'rounded-lg' }"
+            alt="blog feature image"
+          />
+        </div>
       </template>
     </UPageHeader>
 
     <UPageBody>
-      <ContentRenderer :value="post!" />
+      <ContentRenderer :value="post" />
 
       <USeparator icon="lucide:book" />
 

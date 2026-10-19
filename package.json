@@ -51,6 +51,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-better-tailwindcss": "^4.7.0",
     "feed": "^6.0.0",
+    "nuxt-seo-utils": "^9.0.1",
     "rehype-stringify": "^10.0.1",
     "rehype-urls": "^1.2.0",
     "remark-frontmatter": "^5.0.0",
