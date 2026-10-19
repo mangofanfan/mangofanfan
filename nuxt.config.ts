@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: '芒果帆帆的全新个人网站喵！' },
         { name: 'keywords', content: '芒果帆帆,MangoFanFan,Nuxt,博客' },
-        { property: 'og:side_name', content: '芒果客栈[mango.js]' },
+        { property: 'og:site_name', content: '芒果客栈[mango.js]' },
         { property: 'og:locale', content: 'zh_CN' },
         { name: 'apple-mobile-web-app-title', content: '芒果客栈' },
       ],
