@@ -47,10 +47,7 @@ export default defineNuxtConfig({
       title: '芒果客栈 [mango.js]',
       titleTemplate: '%s - 芒果客栈 [mango.js]',
       meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '芒果帆帆的全新个人网站喵！' },
         { name: 'keywords', content: '芒果帆帆,MangoFanFan,Nuxt,博客' },
-        { property: 'og:site_name', content: '芒果客栈[mango.js]' },
         { property: 'og:locale', content: 'zh_CN' },
         { name: 'apple-mobile-web-app-title', content: '芒果客栈' },
       ],
@@ -78,11 +75,13 @@ export default defineNuxtConfig({
   },
 
   image: {
-    format: ['avif', 'webp'],
     provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'ipx',
     cloudflare: {
       baseURL: 'https://mango.js.cn',
     },
+    format: ['avif', 'webp'],
+    densities: [1, 2],
+    screens: { sm: 480, md: 768, lg: 1024, xxl: 1600, '2xl': 1920 },
   },
 
   icon: {
@@ -107,7 +106,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    name: '芒果.js',
+    name: '芒果客栈',
     url: 'https://mango.js.cn/',
     description: '芒果帆帆的全新个人网站喵！',
     defaultLocale: 'zh-CN',

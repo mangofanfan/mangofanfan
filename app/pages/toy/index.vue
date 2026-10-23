@@ -24,6 +24,12 @@ const knowledgePosts = ref<BlogPostProps[]>([
     image: '/images/toys/index-license.png',
     to: '/toy/knowledge/license',
   },
+  {
+    title: '安全问题',
+    description: '你应该及时知晓的软件与计算机安全性问题',
+    image: '/images/toys/index-security.png',
+    to: '/toy/knowledge/security',
+  },
 ])
 const backupPosts = ref<BlogPostProps[]>([
   {

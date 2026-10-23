@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="app-site-footer mt-8">
+  <div class="app-site-footer mt-8 print:hidden">
     <USeparator>
       <template #default>
         <div class="flex flex-row px-2 border border-default rounded-2xl divide-x divide-default">

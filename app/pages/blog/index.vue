@@ -28,8 +28,21 @@ useSeoMeta({
       <UBlogPost
         v-for="post of posts"
         :key="post.path"
-        v-bind="post"
         :to="post.path"
+        :title="post.title"
+        :description="post.description"
+        :date="post.date"
+        :image="
+          post.image && {
+            src: post.image,
+            alt: `${post.title} 的特色图像`,
+            width: 1600,
+            height: 900,
+            densities: '1x 2x',
+            sizes: 'sm:100vw md:768px',
+            format: 'auto',
+          }
+        "
         variant="soft"
       />
     </UBlogPosts>

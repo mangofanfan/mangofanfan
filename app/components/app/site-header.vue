@@ -84,7 +84,7 @@ const items = ref<NavigationMenuItem[]>([
     mode="slideover"
     class="app-site-header"
     :ui="{
-      root: () => 'app-site-header h-(--ui-header-height) sticky top-0 z-50',
+      root: () => 'app-site-header h-(--ui-header-height) sticky top-0 z-50 print:hidden',
       container: [
         'w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full',
         'bg-default/75 backdrop-blur-sm relative z-5',
