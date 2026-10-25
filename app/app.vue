@@ -13,6 +13,16 @@ provide('remove-additional-navigation-menu-items', removeANMI)
   <UApp :locale="zh_cn">
     <NuxtLoadingIndicator />
 
+    <UBanner
+      id="banner-emudhra-warning"
+      class="font-sans font-bold"
+      icon="ant-design:alert-outlined"
+      color="warning"
+      title="请积极响应 eMudhra CA 事件导致的安全风险，即使你并非开发者。"
+      to="/toy/knowledge/security"
+      close
+    />
+
     <AppSiteHeader :additional-items />
 
     <UMain>
