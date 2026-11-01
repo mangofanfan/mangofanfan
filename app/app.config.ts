@@ -1,5 +1,10 @@
 export default defineAppConfig({
   ui: {
+    header: {
+      slots: {
+        body: 'font-sans',
+      },
+    },
     colors: {
       primary: 'green',
       neutral: 'slate',

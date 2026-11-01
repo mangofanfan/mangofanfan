@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { zh_cn } from '@nuxt/ui/locale'
 import type { NavigationMenuItem } from '@nuxt/ui'
+import type { ContentNavigationItem } from '@nuxt/content'
 
 const additionalItems = ref<NavigationMenuItem[] | null>(null)
 const setANMI = (newVal: NavigationMenuItem[]) => (additionalItems.value = newVal)
 const removeANMI = () => (additionalItems.value = [])
 provide('set-additional-navigation-menu-items', setANMI)
 provide('remove-additional-navigation-menu-items', removeANMI)
+
+const contentNavigationItems = ref<ContentNavigationItem[]>([])
+const setCNI = (newVal: ContentNavigationItem[]) => (contentNavigationItems.value = newVal)
+const removeCNI = () => (contentNavigationItems.value = [])
+provide('set-content-navigation-items', setCNI)
+provide('remove-content-navigation-items', removeCNI)
 </script>
 
 <template>
@@ -25,7 +32,7 @@ provide('remove-additional-navigation-menu-items', removeANMI)
     />
     -->
 
-    <AppSiteHeader :additional-items />
+    <AppSiteHeader :additional-items :content-navigation-items />
 
     <UMain>
       <UContainer>

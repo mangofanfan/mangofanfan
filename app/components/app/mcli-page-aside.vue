@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import type { PageLink } from '@nuxt/ui'
+import type { ContentNavigationItem } from '@nuxt/content'
 
 const { data: navigation } = await useAsyncData(`docs-mcli-navigation`, () => {
   return queryCollectionNavigation('docsMcli').where('published', '=', true).order('index', 'ASC')
 })
+
+if (!navigation.value) {
+  throw createError({ status: 500, message: 'Unexpected value', fatal: true })
+}
 
 const links = ref<PageLink[]>([
   {
@@ -19,6 +24,9 @@ const links = ref<PageLink[]>([
     target: '_blank',
   },
 ])
+
+const setCNI = inject('set-content-navigation-items') as (newVal: ContentNavigationItem[]) => void
+setCNI(navigation.value[0]!.children![0]!.children!)
 </script>
 
 <template>

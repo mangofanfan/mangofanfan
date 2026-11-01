@@ -260,6 +260,9 @@ importers:
         specifier: ^4.6.5
         version: 4.6.5
     devDependencies:
+      '@iconify-json/devicon':
+        specifier: ^1.2.74
+        version: 1.2.74
       '@nuxt/eslint':
         specifier: ^1.17.0
         version: 1.17.0(@nuxt/schema@4.6.1)(@typescript-eslint/utils@8.66.0(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@vue/compiler-sfc@3.5.43)(confbox@0.3.1)(dotenv@17.4.2)(esbuild@0.28.1)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.3)(oxc-parser@0.139.0)(rolldown@1.2.13)(rollup@4.60.4)(srvx@0.11.22)(supports-color@10.2.2)(typescript@6.0.3)(unplugin@3.4.0(esbuild@0.28.1)(rolldown@1.2.13)(rollup@4.60.4)(vite@8.3.4(@types/node@26.6.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.47.1)(tsx@4.23.15)(yaml@2.9.0)))(vite@8.3.4(@types/node@26.6.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.47.1)(tsx@4.23.15)(yaml@2.9.0))
@@ -1328,6 +1331,9 @@ packages:
 
   '@iconify-json/ant-design@1.2.9':
     resolution: {integrity: sha512-cAP5tQXUj05Hb0o3nyjEzYofuU5luRm6IV4FNZ3KQkG2cfzvmM34WYJuNLA3/sWqfE0cHSaaaEGvIdAUq+bN2Q==}
+
+  '@iconify-json/devicon@1.2.74':
+    resolution: {integrity: sha512-wyCZ1eXu+7gDE9IYrSBij114TMLn717BCR/UBOXc1DnEuMLsvok+/QsMQ8t9RvRdZ2FCpHAaF78osT0+7tvZYg==}
 
   '@iconify-json/lucide@1.2.134':
     resolution: {integrity: sha512-MXzwT7H8Ii/aGN6NLtMbMLDaxLYsOxCKEdW0F5h3MemNUaUBqAxr9nz0mPlXzozd/piQyrdSiUyk0t5b5ErADg==}
@@ -9286,6 +9292,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@iconify-json/ant-design@1.2.9':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/devicon@1.2.74':
     dependencies:
       '@iconify/types': 2.0.0
 

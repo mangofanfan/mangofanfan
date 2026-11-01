@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import type { ContentNavigationItem } from '@nuxt/content'
 
 interface Props {
   additionalItems?: NavigationMenuItem[] | null
+  contentNavigationItems?: ContentNavigationItem[] | null
 }
 
-withDefaults(defineProps<Props>(), { additionalItems: null })
+withDefaults(defineProps<Props>(), { additionalItems: null, contentNavigationItems: null })
 
 const items = ref<NavigationMenuItem[]>([
   {
@@ -123,6 +125,13 @@ const items = ref<NavigationMenuItem[]>([
           orientation="vertical"
           highlight
           :items="additionalItems"
+        />
+
+        <UContentNavigation
+          v-if="contentNavigationItems"
+          :navigation="contentNavigationItems"
+          highlight
+          :collapsible="false"
         />
       </div>
     </template>

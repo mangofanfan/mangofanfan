@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TocLink } from '@nuxt/content'
+
 definePageMeta({
   layout: 'document',
 })
@@ -33,10 +35,13 @@ useSeoMeta({
   articlePublishedTime: page.value.publishedDate,
   articleModifiedTime: page.value.modifiedDate,
 })
+
+const setTocLinks = inject('document-set-toc-links') as (tocLinks: TocLink[]) => void
+setTocLinks(page.value.body.toc!.links)
 </script>
 
 <template>
-  <UPage>
+  <div class="mcfpp-document-page">
     <UPageHeader :title="page!.title" :description="page!.description" />
 
     <UPageBody>
@@ -46,17 +51,7 @@ useSeoMeta({
 
       <UContentSurround :surround />
     </UPageBody>
-
-    <template #left>
-      <AppMcfppPageAside />
-    </template>
-
-    <template #right>
-      <UPageAside>
-        <UContentToc highlight highlight-variant="circuit" :links="page!.body.toc!.links" />
-      </UPageAside>
-    </template>
-  </UPage>
+  </div>
 </template>
 
 <style scoped></style>

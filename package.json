@@ -45,6 +45,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@iconify-json/devicon": "^1.2.74",
     "@nuxt/eslint": "^1.17.0",
     "@types/cloudflare-turnstile": "^0.2.2",
     "eslint": "^10.11.0",
