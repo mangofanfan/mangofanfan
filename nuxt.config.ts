@@ -148,7 +148,7 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
-          langs: [mcfpp, mcfunction, 'yaml', 'json', 'bash'],
+          langs: [mcfpp, mcfunction, 'yaml', 'json', 'bash', 'dotenv', 'powershell'],
           theme: themes,
         },
       },

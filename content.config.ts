@@ -60,6 +60,24 @@ export default defineContentConfig({
         modifiedDate: z.date(),
       }),
     }),
+    docsMcli: defineCollection({
+      type: 'page',
+      source: 'docs/mcli/**',
+      schema: z.object({
+        schemaOrg: defineSchemaOrgSchema(),
+        head: z
+          .object({
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            script: z.array(z.record(z.string(), z.any())).optional(),
+          })
+          .optional(),
+        sitemap: defineSitemapSchema(),
+        index: z.number(),
+        published: z.boolean().default(true),
+        publishedDate: z.date(),
+        modifiedDate: z.date(),
+      }),
+    }),
     toys: defineCollection({
       type: 'page',
       source: 'toys/**/*.md',

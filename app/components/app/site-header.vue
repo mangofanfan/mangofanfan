@@ -27,6 +27,11 @@ const items = ref<NavigationMenuItem[]>([
         description: '为 VS Code 提供 MCFPP 语言的高级支持的扩展',
         to: '/mcfpp-extension',
       },
+      {
+        label: 'MCLI - Minecraft CLI',
+        description: '为 Minecraft Java 版版本管理所设计的命令行工具',
+        to: '/mcli',
+      },
     ],
   },
   {
@@ -35,7 +40,7 @@ const items = ref<NavigationMenuItem[]>([
     to: '/blog',
   },
   {
-    label: 'MCFPP',
+    label: '我的世界',
     icon: 'vscode-icons:file-type-minecraft',
     children: [
       {
@@ -47,6 +52,11 @@ const items = ref<NavigationMenuItem[]>([
         label: 'MCFPP VS Code 扩展',
         description: '为 VS Code 提供 MCFPP 语言的高级支持的扩展',
         to: '/docs/mcfpp-vscode-extension/start',
+      },
+      {
+        label: 'MCLI',
+        description: '提供 Minecraft Java 版管理功能的命令行工具',
+        to: '/docs/mcli/concept/start',
       },
     ],
   },

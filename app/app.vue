@@ -13,6 +13,7 @@ provide('remove-additional-navigation-menu-items', removeANMI)
   <UApp :locale="zh_cn">
     <NuxtLoadingIndicator />
 
+    <!--
     <UBanner
       id="banner-emudhra-warning"
       class="font-sans font-bold"
@@ -22,6 +23,7 @@ provide('remove-additional-navigation-menu-items', removeANMI)
       to="/toy/knowledge/security"
       close
     />
+    -->
 
     <AppSiteHeader :additional-items />
 
