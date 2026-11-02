@@ -67,6 +67,13 @@ useHead({
         avatar-url="https://www.foreverblog.cn/favicon.ico"
         image-url="/images/20261017/for-ten-years.png"
       />
+      <app-friend-card
+        link="https://hitokoto.cn/"
+        name="Hitokoto·一言"
+        description="用代码表达言语的魅力，用代码表达山河的壮丽。"
+        avatar-url="https://hitokoto.cn/favicon.ico"
+        image-url="https://v2-jsdelivr-proxy.hitokoto.cn/gh/hitokoto-osc/resources@master/pic/index_background.jpg"
+      />
     </div>
 
     <UCard v-if="page" class="mt-36" title="提交您的博客站点">
