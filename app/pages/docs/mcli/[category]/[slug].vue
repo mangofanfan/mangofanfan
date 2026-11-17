@@ -44,7 +44,24 @@ setTocLinks(page.value.body.toc!.links)
 
 <template>
   <div class="mcli-document-page">
-    <UPageHeader :title="page!.title" :description="page!.description" />
+    <UPageHeader :title="page!.title" :description="page!.description">
+      <template #headline>
+        <p class="space-x-1 font-sans">
+          <span class="text-gray-500 font-light">最后更新于</span>
+          <span class="text-primary font-semibold">
+            {{ page?.modifiedDate ?? page?.publishedDate }}
+          </span>
+        </p>
+        <p v-if="page?.mcliVersion" class="space-x-1 font-sans">
+          <span class="text-gray-500 font-light">适配版本为</span>
+          <router-link to="/docs/mcli/devlog/version-log">
+            <span class="text-primary font-semibold underline">
+              {{ page.mcliVersion }}
+            </span>
+          </router-link>
+        </p>
+      </template>
+    </UPageHeader>
 
     <UPageBody>
       <ContentRenderer :value="page!" />

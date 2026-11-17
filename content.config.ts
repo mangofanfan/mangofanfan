@@ -76,6 +76,7 @@ export default defineContentConfig({
         published: z.boolean().default(true),
         publishedDate: z.date(),
         modifiedDate: z.date(),
+        mcliVersion: z.string(),
       }),
     }),
     toys: defineCollection({

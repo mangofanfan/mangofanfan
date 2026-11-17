@@ -12,6 +12,18 @@ if (!navigation.value) {
 
 const links = ref<PageLink[]>([
   {
+    label: 'MCLI on GitHub',
+    to: 'https://github.com/mangofanfan/mcli',
+    icon: 'ant-design:github-filled',
+    target: '_blank',
+  },
+  {
+    label: 'MCLI on PyPI',
+    to: 'https://pypi.org/project/mmccli/',
+    icon: 'devicon:pypi',
+    target: '_blank',
+  },
+  {
     label: 'Minecraft 中文 Wiki',
     to: 'https://zh.minecraft.wiki/',
     icon: 'vscode-icons:file-type-minecraft',
